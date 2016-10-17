@@ -1,0 +1,284 @@
+
+.body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url(../image/fon1.jpg);
+    background-repeat: repeat;
+    width: auto;
+    z-index: 1;
+    overflow: visible;
+    height: 2000px;
+}
+.hat {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: repeating-linear-gradient(0deg,rgba(255,255,255,0.30),rgba(125, 146, 234, 0.9));
+    z-index: 2;
+    
+}
+.card {
+    position: relative;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: -170px;
+    height: 2000px;
+    background: rgba(125, 146, 234, 0.5);
+}
+.hat H3 {
+    width: 100px;
+    position: absolute;
+    left: 100px;
+    top: -5px;
+    font-family: 'Kurale', cursive; 
+    font-size: 30px;
+}
+.language {
+    position: absolute;
+    right: 15px;
+    top: 30px;
+}
+.basket {
+    width: 300px;
+    height: 70px;
+    position: absolute;
+    top: 5px;
+    right: 150px;
+}
+.s1 {
+    width: 250px;
+    position: absolute;
+    right: 250px;
+    top: 5px;
+}
+.s1 P {
+    font-size: 18px;
+    position: relative;
+    left: 0px;
+    width: 50px;
+    font-family: 'Kurale', cursive; 
+}
+.s1 INPUT {
+    position: relative;
+    left: 75px;
+    width: 150px;
+    bottom: 40px;
+}
+.card H3 {
+    position: relative;
+    top: 120px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Kurale';
+    color: #600083;
+}
+.price {
+    position: relative;
+    top: 50px;
+    width: 250px;
+    height: 120px;
+    left: 70%;
+    background-color: rgba(230, 228, 255, 0.49);
+}
+.price P{
+    font-family: 'Kurale';
+    font-size: 22px;
+    float: left;
+}
+.cat IMG {
+    position: relative;
+    left: 15px;
+    padding: 30px;
+    top:20px;
+}
+.price input {
+    float: right;
+    transform: rotate(0deg); 
+    border-radius: 100px;
+    transition:all 400ms; 
+}
+#buy:hover {
+    transform: rotate(360deg);
+}
+.nav {
+    display: block;
+    position: relative;
+}
+.nav:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 5px;
+      position: absolute;
+      left: 0;
+      background: linear-gradient(90deg, 
+        #CDE0EE, #CDE0EE 20%,
+        #EBF0F3 20%, #EBF0F3 40%, 
+        #9BB0C1 40%, #9BB0C1 60%, 
+        #5D8BAD 60%, #5D8BAD 80%,
+        #041E34 80%, #041E34 100%);
+    }
+.nav ul {
+      width: auto;
+      margin: 0 auto;
+      list-style: none;
+      overflow: hidden;
+}
+.nav li {
+      float:left;
+      width: 25%;
+        padding-left: 50px;
+}
+.nav a {
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      color: #953bd6;
+      padding: 0.5em 0;
+      font-size: 28px;
+      font-weight: bold;
+      transition: 0.5s ease-in-out;
+      font-family: 'Kurale', cursive; 
+}
+.nav a:hover {
+    color: #600083;
+}
+.cat img:hover {
+    cursor: pointer; 
+    z-index: 1; 
+    transform:scale(2.5)
+    translate(70px, 20px); 
+    transition: all 0.3s linear 0.3s; 
+}
+.view {
+    background-color: rgba(240, 248, 255, 0.59);
+    font-size: 22px;
+}
+#view1 p {
+    padding-left: 30px;
+}
+#characteristics ul {
+    list-style-type: none;
+}
+#reviews ul {
+    list-style-type: none;
+}
+#reviews li {
+    padding-top: 30px;
+}
+a.button1 {
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  border-radius: 3px;
+  background: rgb(47, 114, 222);
+  box-shadow: 0 -3px rgb(28, 69, 242) inset;
+  transition: 0.2s;
+  padding: .5em 1em calc(.5em + 1px);
+  position: relative;
+  top: -20px;
+} 
+a.button1:hover { background: rgb(28, 69, 242); }
+a.button1:active {
+  background: rgb(28, 69, 242);
+  box-shadow: 0 3px rgb(28, 69, 242) inset;
+}
+.smallcard {
+    position: relative;
+    margin-top: 0px;
+    top: 150px;
+    height: 100%;
+}
+#arrow {
+    position: fixed;
+    bottom: 60px;
+    left: 100px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.35);
+}
+.product {
+    position: relative;
+    background: rgba(251, 255, 251, 0.56);
+    border-radius: 15px;
+    width: auto;
+    height: 300px;
+    margin: 0px;
+    margin-top: -100px;
+
+}
+.product h3{
+    position: relative;
+    font-size: 25px;
+    float: left;
+    top: 0px;
+    left: 40px;
+    font-family: 'Kurale';
+}
+.photo {
+    position: absolute;
+    float: left;
+    top: 70px;
+    left: 10px;
+}
+.price1 {
+    position: relative;
+    margin-top: 170px;
+    width: 30%;
+    height: 120px;
+    margin-left: 70%;
+    background: none;
+}
+.price1 input {
+    margin-top: 200px;
+    position: relative;
+    float: right;
+    transform: rotate(0deg);
+    border-radius: 100px;
+    transition: all 400ms;
+    top:-20px;
+    right: -70px;
+}
+.description {
+    position: absolute;
+    float: right;
+    margin-top: 50px;
+    width: 60%;
+    height: 50%;
+    left: 40%;
+    font-family: 'Kurale';
+    font-size: 20px;
+}
+.price1 p {
+    float: right;
+    position: relative;
+    top: 230px;
+    right: 150px;
+    font-family: 'Kurale';
+    font-size: 20px;
+}
+.filter {
+    position: relative;
+    margin: 0;
+    top: -50px;
+}
+select {
+    width: 300px;
+    float: left;
+    height: 30px;
+    border-radius: 30px;
+    font-family: 'Kurele';
+    font-size: 20px;
+    background-color: rgba(236, 255, 248, 0.6);
+}
+option {
+    font-family: 'Kurele';
+    font-size: 20px;
+    background-color: rgba(236, 255, 248, 0.6);
+}
