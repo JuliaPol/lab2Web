@@ -8,24 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Магазин</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Kurale" rel="stylesheet">
 </head>
 <body>
     <div class="hat">
         <a href = "#"> <img src = "../image/logo.png" width="90" height="70"></a>
         <h3>PetShop</h3>
         <div class="basket">
-            <a href="#" class="button1">Вход</a>
-            <a href="#" class="button1">История покупок</a>
+            <a href="#" class="button1"><%=res.getString("login")%></a>
+            <a href="#" class="button1"><%=res.getString("history")%></a>
             <a href="#"><img src="../image/basket.png"></a>
         </div>
         <div class="language">
-            <a href = "#"> <img src = "../image/russia.png" width="30" height="30"></a>
-            <a href = "#"> <img src = "../image/england.png" width="30" height="30"></a>
-            <a href = "#"> <img src = "../image/belarus.png" width="30" height="30"></a>
+            <a href = "?lang=ru"> <img src = "../image/russia.png" width="30" height="30"></a>
+            <a href = "?lang=en"> <img src = "../image/england.png" width="30" height="30"></a>
+            <a href = "?lang=be"> <img src = "../image/belarus.png" width="30" height="30"></a>
         </div>
     </div>
 </body>

@@ -10,9 +10,11 @@ public class Animal implements Serializable {
     private String name;
     private String description;
     private String img;
+    private String img1;
+    private String img2;
     private String cost;
     private int id;
-    private static int countElem;
+    private static int countElem = 0;
 
     public Animal() {
         this.type = null;
@@ -24,13 +26,20 @@ public class Animal implements Serializable {
         countElem++;
     }
 
-    public Animal(String type, String name, String description, String img, String cost, int id) {
+    public Animal(String type, String name, String description, String img, String img1, String img2, String cost) {
         this.type = type;
         this.name = name;
         this.description = description;
         this.img = img;
+        this.img1 = img1;
+        this.img2 = img2;
         this.cost = cost;
-        this.id = id;
+        this.id = countElem;
+        countElem++;
+    }
+
+    public static void setCountElem(int countElem) {
+        Animal.countElem = countElem;
     }
 
     public String getCost() {
@@ -39,6 +48,14 @@ public class Animal implements Serializable {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getImg1() {
+        return img1;
+    }
+
+    public String getImg2() {
+        return img2;
     }
 
     public void setCost(String cost) {

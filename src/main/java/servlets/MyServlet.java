@@ -4,27 +4,26 @@ package servlets;
  * Created by Julia on 15.10.2016.
  */
 
+import bean1.AnimalList;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 public class MyServlet extends HttpServlet {
 
-    //private String param;
-    //private List<Animal> productList = new ArrayList();
-
+    private String param;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        //param = config.getInitParameter("paramOne");
-        //productList.add(new Animal("Cat", "Barsick", "Hui"));
-        //productList.add(new Animal("Dog", "Sharick", "Hui"));
+        param = config.getInitParameter("paramOne");
     }
 
     @Override
@@ -44,6 +43,7 @@ public class MyServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String lang = request.getParameter("lang");
+        int id = Integer.parseInt(request.getParameter("id"));
         Locale locale;
         if ("en".equals(lang)) {
             locale = new Locale("en", "GB");
@@ -55,7 +55,89 @@ public class MyServlet extends HttpServlet {
             locale = Locale.getDefault();
         }
         ResourceBundle res = ResourceBundle.getBundle("Shop", locale);
-        request.getRequestDispatcher("jsp/list.jsp").forward(request, response);
+        int param1;
+        param1=Integer.parseInt(param);
+        StringBuilder sb = new StringBuilder();
+        StringBuilder append = sb.append("<html>\n" +
+                "    <head>\n" +
+                "        <meta charset=\"utf-8\">\n" +
+                "        <title>" +res.getString("title") + "</title>\n" +
+                "        <link rel=\"stylesheet\" type=\"text/css\" href=\"../../../../css/style.css\">\n" +
+                "        <link href=\"https://fonts.googleapis.com/css?family=Kurale\" rel=\"stylesheet\">\n" +
+                "        <script src=\"../../../js/script.js\"></script>\n" +
+                "    </head>");
+        sb.append("<body>\n" +
+                "       <div class=\"body\"> \n" +
+                "            <div class=\"hat\">\n" +
+                "                <a href = \"/\"> <img src = \"../../../../image/logo.png\" width=\"90\" height=\"70\"></a> \n" +
+                "                <h3>PetShop</h3>\n" +
+                "                <div class=\"basket\">\n" +
+                "                   <a href=\"#\" class=\"button1\">"+res.getString("login") +"</a>\n" +
+                "                   <a href=\"#\" class=\"button1\">"+res.getString("history") +"</a>\n"+
+                "                    <a href=\"#\" ><img src=\"../../../../image/basket.png\"></a>\n" +
+                "                </div>\n" +
+                "                <div class=\"language\"> \n" +
+                "                    <a href = \"s?id="+id+"&lang=ru\"> <img src = \"../../../../image/russia.png\" width=\"30\" height=\"30\"></a> \n" +
+                "                    <a href = \"s?id="+id+"&lang=en\"> <img src = \"../../../../image/england.png\" width=\"30\" height=\"30\"></a> \n" +
+                "                    <a href = \"s?id="+id+"&lang=be\"> <img src = \"../../../../image/belarus.png\" width=\"30\" height=\"30\"></a> \n" +
+                "                </div>\n" +
+                "            </div>");
+        sb.append(" <div class=\"card\"> \n" +
+                "                 <!--<input id=\"arrL\" type=\"image\" src=\"../../../../image/1.png\">\n" +
+                "                 <input id=\"arrR\" type=\"image\" src=\"../../../../image/2.png\">-->\n" +
+                "                 <h3>" +res.getString(AnimalList.getAnimalList().get(id).getName())+ "</h3>\n" +
+                "                 <div class=\"price\">\n" +
+                "                     <p id=\"price\">" +res.getString(AnimalList.getAnimalList().get(id).getCost()) +"</p>\n" +
+                "                     <input type=\"image\" src=\"../../../../image/icon3.png\" id=\"buy\">\n" +
+                "                 </div>\n" +
+                "                 <div class=\"cat\">\n" +
+                "                     <img src = \"../../../../"+AnimalList.getAnimalList().get(id).getImg()+".jpg\" width=\"250\" height=\"200\">\n" +
+                "                     <img src=\"../../../../"+AnimalList.getAnimalList().get(id).getImg1()+".jpg\" width=\"250\" height=\"200\">\n" +
+                "                     <img src=\"../../../../"+AnimalList.getAnimalList().get(id).getImg2()+".jpg\" width=\"250\" height=\"200\">\n" +
+                "                 </div>\n" +
+                "                 <div class=\"nav\">\n" +
+                "                     <ul>\n" +
+                "                         <li><a href=\"#v\" id=\"a1\" class=\"menu\" style=\"color:" + ((param1 == 1) ? "#600083;" : "#953bd6;") + "\" onclick=\"show('1')\">"+res.getString("view") +"</a></li>\n" +
+                "                         <li><a href=\"#v\" id=\"a2\" class=\"menu\" style=\"color:" + ((param1 == 2) ? "#600083;" : "#953bd6;") + "\" onclick=\"show('2')\">"+res.getString("characteristics") +"</a></li>\n" +
+                "                         <li><a href=\"#v\" id=\"a3\" class=\"menu\" style=\"color:" + ((param1 == 3) ? "#600083;" : "#953bd6;") + "\" onclick=\"show('3')\">"+res.getString("reviews") +"</a></li>\n" +
+                "                     </ul>\n" +
+                "                 </div>\n" +
+                "                 <div class=\"view\" name=\"v\">\n" +
+                "                     <div id=\"view1\" class=\"specification\" style=\"display:"+((param1 == 1) ? "block;" : "none;") + "\">\n" +
+                "                         <p> "+res.getString(AnimalList.getAnimalList().get(id).getDescription()) +"</p>\n" +
+                "                         <p> "+res.getString("about2") +"</p>\n" +
+                "                     </div>\n" +
+                "                     <div id=\"characteristics\" class=\"specification\" style=\"display:"+((param1 == 2) ? "block;" : "none;") + "\">\n" +
+                "                        <ul>\n" +
+                "                            <li>"+res.getString("li1") +"</li>\n" +
+                "                            <li>"+res.getString("li2") +"</li>\n" +
+                "                            <li>"+res.getString("li3") +"</li>\n" +
+                "                            <li>"+res.getString("li4") +"</li>\n" +
+                "                            <li>"+res.getString("li5") +"</li>\n" +
+                "                            <li>"+res.getString("li6") +"</li>\n" +
+                "                            <li>"+res.getString("li7") +"</li>\n" +
+                "                            <li>"+res.getString("li8") +"</li>\n" +
+                "                            <li>"+res.getString("li9") +"</li>\n" +
+                "                            <li>"+res.getString("li10") +"</li>\n" +
+                "                            <li>"+res.getString("li11") +"</li>\n" +
+                "                        </ul>\n" +
+                "                     </div>\n" +
+                "                     <div id=\"reviews\" class=\"specification\" style=\"display:"+((param1==3)?"block;":"none;")+"\">\n" +
+                "                         <ul>\n" +
+                "                            <li><b>"+res.getString("rewN1") +"</b>" +res.getString("rew1") +"</li>\n" +
+                "                            <li><b>"+res.getString("rewN2") +"</b> "+res.getString("rew2") +" </li>\n" +
+                "                            <li><b>"+res.getString("rewN3") +"</b> "+res.getString("rew3") + "</li>\n" +
+                "                        </ul>\n" +
+                "                     </div>\n" +
+                "                 </div>\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "    </body>\n" +
+                "</html>");
+        PrintWriter out = response.getWriter();
+        out.println(sb.toString());
+        out.flush();
+        out.close();
     }
 
 }

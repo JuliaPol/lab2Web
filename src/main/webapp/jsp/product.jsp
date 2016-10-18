@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="product">
-        <a href="#"><h3><jsp:getProperty name="animalId" property="name"/></h3></a>
+        <a href="/s?id=<jsp:getProperty name="animalId" property="id"/>"><h4><jsp:getProperty name="animalId" property="name"/></h4></a>
         <div class="photo"> <img src="<jsp:getProperty name="animalId" property="img"/>.jpg" width="250px" height="200px"></div>
         <div class="description"> <p><jsp:getProperty name="animalId" property="description"/></p></div>
         <div class="price1">
