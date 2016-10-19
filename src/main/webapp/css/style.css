@@ -310,3 +310,12 @@ option {
     font-size: 20px;
     background-color: rgba(236, 255, 248, 0.6);
 }
+.smallcard h2 {
+    float: right;
+    font-family: 'Kurele';
+    color: #600083;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+    margin-right: 500px;
+}

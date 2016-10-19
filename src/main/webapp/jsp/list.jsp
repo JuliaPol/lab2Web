@@ -33,10 +33,10 @@
         Cookie[] cookies = request.getCookies();
         ResourceBundle res = ResourceBundle.getBundle("Shop", locale);
         AnimalList.deleteList();
-        AnimalList.addElem(new Animal("cats", "name1", "about1", "../image/cat-1044750_640","cat-1692702_640","cat-1692794_640","mon"));
-        AnimalList.addElem(new Animal("cats", "name2", "about11", "../image/kiti1","../image/kiti2","../image/kiti3", "mon1"));
-        AnimalList.addElem(new Animal("dogs", "name5", "about14", "../image/span1","../image/span2","../image/span3", "mon4"));
-        AnimalList.addElem(new Animal("birds", "name3", "about12", "../image/pop1","../image/pop2","../image/pop3", "mon2"));
+        AnimalList.addElem(new Animal("cats", "name1", "about1", "../image/cat-1044750_640", "../image/cat-1692702_640", "../image/cat-1692794_640", "mon"));
+        AnimalList.addElem(new Animal("cats", "name2", "about11", "../image/kiti1", "../image/kiti2", "../image/kiti3", "mon1"));
+        AnimalList.addElem(new Animal("dogs", "name5", "about14", "../image/span1", "../image/span2", "../image/span3", "mon4"));
+        AnimalList.addElem(new Animal("birds", "name3", "about12", "../image/pop1", "../image/pop2", "../image/pop3", "mon2"));
         AnimalList.addElem(new Animal("dogs", "name4", "about13", "../image/dog1", "../image/dog2", "../image/dog3", "mon3"));
         ArrayList<Animal> animalList1 = AnimalList.getAnimalList();
     %>
@@ -53,7 +53,7 @@
                 <select name="selectName" onchange="itemsChanged();">
                     <option value='val'><%=res.getString("select")%>
                     </option>
-                    <option value='all'><%=res.getString("allAnimals")%>
+                    <option value='all'><%=res.getString("all")%>
                     </option>
                     <option value='cats'><%=res.getString("cats")%>
                     </option>
@@ -63,22 +63,31 @@
                     </option>
                 </select>
             </div>
-            <%if (type == null) {
-                if (cookies == null) {
-                    type ="all";
-                } else {
-                    for (int i = 0; i < cookies.length; i++) {
-                        if ("type".equals(cookies[i].getName())) {
-                            type = cookies[i].getValue();
-                            break;
+            <%
+                if (type == null) {
+                    if (cookies == null) {
+                        type = "all";
+                        Cookie cookie = new Cookie("type", type);
+                        response.addCookie(cookie);
+                    } else {
+                        for (int i = 0; i < cookies.length; i++) {
+                            if ("type".equals(cookies[i].getName())) {
+                                type = cookies[i].getValue();
+                                break;
+                            }
+                        }
+                        if (type == null) {
+                            type = "all";
+                            Cookie cookie = new Cookie("type", type);
+                            response.addCookie(cookie);
                         }
                     }
+                } else {
+                    Cookie cookie = new Cookie("type", type);
+                    response.addCookie(cookie);
                 }
-            } else {
-                Cookie cookie = new Cookie("type", type);
-                response.addCookie(cookie);
-            }
             %>
+            <h2><%=res.getString(type)%></h2>
             <%
                 if (type != null) {
                     switch (type) {
@@ -94,66 +103,66 @@
             %>
             <%@include file="product.jsp" %>
             <%
-                        }
+                                }
+                            }
+                            break;
+                        case "dogs":
+                            for (int i = 0; i < animalList1.size(); i++) {
+                                if (animalList1.get(i).getType().equals("dogs")) {
+                                    animalId.setName(res.getString(animalList1.get(i).getName()));
+                                    animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
+                                    animalId.setImg(animalList1.get(i).getImg());
+                                    animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                    animalId.setId(animalList1.get(i).getId());
+                                    animalId.setType(animalList1.get(i).getType());
+                    %>
+                    <%@include file="product.jsp" %>
+                    <%
+                                }
+                            }
+                            break;
+                        case "birds":
+                            for (int i = 0; i < animalList1.size(); i++) {
+                                if (animalList1.get(i).getType().equals("birds")) {
+                                    animalId.setName(res.getString(animalList1.get(i).getName()));
+                                    animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
+                                    animalId.setImg(animalList1.get(i).getImg());
+                                    animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                    animalId.setId(animalList1.get(i).getId());
+                                    animalId.setType(animalList1.get(i).getType());
+                    %>
+                    <%@include file="product.jsp" %>
+                    <%
+                                }
+                            }
+                            break;
+                        case "all":
+                            for (int i = 0; i < animalList1.size(); i++) {
+                                animalId.setName(res.getString(animalList1.get(i).getName()));
+                                animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
+                                animalId.setImg(animalList1.get(i).getImg());
+                                animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                animalId.setId(animalList1.get(i).getId());
+                                animalId.setType(animalList1.get(i).getType());
+                    %>
+                    <%@include file="product.jsp" %>
+                    <%
+                            }
+                            break;
+                        default:
+                            for (int i = 0; i < animalList1.size(); i++) {
+                                animalId.setName(res.getString(animalList1.get(i).getName()));
+                                animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
+                                animalId.setImg(animalList1.get(i).getImg());
+                                animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                animalId.setId(animalList1.get(i).getId());
+                                animalId.setType(animalList1.get(i).getType());
+                    %>
+                    <%@include file="product.jsp" %>
+                    <%
+                            }
+                            break;
                     }
-                    break;
-                case "dogs":
-                    for (int i = 0; i < animalList1.size(); i++) {
-                        if (animalList1.get(i).getType().equals("dogs")) {
-                            animalId.setName(res.getString(animalList1.get(i).getName()));
-                            animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
-                            animalId.setImg(animalList1.get(i).getImg());
-                            animalId.setCost(res.getString(animalList1.get(i).getCost()));
-                            animalId.setId(animalList1.get(i).getId());
-                            animalId.setType(animalList1.get(i).getType());
-            %>
-            <%@include file="product.jsp" %>
-            <%
-                        }
-                    }
-                    break;
-                case "birds":
-                    for (int i = 0; i < animalList1.size(); i++) {
-                        if (animalList1.get(i).getType().equals("birds")) {
-                            animalId.setName(res.getString(animalList1.get(i).getName()));
-                            animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
-                            animalId.setImg(animalList1.get(i).getImg());
-                            animalId.setCost(res.getString(animalList1.get(i).getCost()));
-                            animalId.setId(animalList1.get(i).getId());
-                            animalId.setType(animalList1.get(i).getType());
-            %>
-            <%@include file="product.jsp" %>
-            <%
-                        }
-                    }
-                    break;
-                case "all":
-                    for (int i = 0; i < animalList1.size(); i++) {
-                        animalId.setName(res.getString(animalList1.get(i).getName()));
-                        animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
-                        animalId.setImg(animalList1.get(i).getImg());
-                        animalId.setCost(res.getString(animalList1.get(i).getCost()));
-                        animalId.setId(animalList1.get(i).getId());
-                        animalId.setType(animalList1.get(i).getType());
-            %>
-            <%@include file="product.jsp" %>
-            <%
-                    }
-                    break;
-                default:
-                    for (int i = 0; i < animalList1.size(); i++) {
-                        animalId.setName(res.getString(animalList1.get(i).getName()));
-                        animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
-                        animalId.setImg(animalList1.get(i).getImg());
-                        animalId.setCost(res.getString(animalList1.get(i).getCost()));
-                        animalId.setId(animalList1.get(i).getId());
-                        animalId.setType(animalList1.get(i).getType());
-            %>
-            <%@include file="product.jsp" %>
-            <%
-                    }
-                    break;
-                }
                 }
             %>
         </div>
