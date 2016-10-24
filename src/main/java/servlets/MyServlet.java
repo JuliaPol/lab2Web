@@ -9,6 +9,7 @@ import bean1.AnimalList;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,6 +45,15 @@ public class MyServlet extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         String lang = request.getParameter("lang");
         int id = Integer.parseInt(request.getParameter("id"));
+        Cookie[] cookies = request.getCookies();
+        if(lang == null) {
+            for (int i = 0; i < cookies.length; i++) {
+                if ("lang".equals(cookies[i].getName())) {
+                    lang = cookies[i].getValue();
+                    break;
+                }
+            }
+        }
         Locale locale;
         if ("en".equals(lang)) {
             locale = new Locale("en", "GB");
@@ -74,7 +84,7 @@ public class MyServlet extends HttpServlet {
                 "                <div class=\"basket\">\n" +
                 "                   <a href=\"#\" class=\"button1\">"+res.getString("login") +"</a>\n" +
                 "                   <a href=\"#\" class=\"button1\">"+res.getString("history") +"</a>\n"+
-                "                    <a href=\"#\" ><img src=\"../../../../image/basket.png\"></a>\n" +
+                "                    <a href=\"/jsp/basket.jsp\" ><img src=\"../../../../image/basket.png\"></a>\n" +
                 "                </div>\n" +
                 "                <div class=\"language\"> \n" +
                 "                    <a href = \"s?id="+id+"&lang=ru\"> <img src = \"../../../../image/russia.png\" width=\"30\" height=\"30\"></a> \n" +
@@ -88,7 +98,7 @@ public class MyServlet extends HttpServlet {
                 "                 <h3>" +res.getString(AnimalList.getAnimalList().get(id).getName())+ "</h3>\n" +
                 "                 <div class=\"price\">\n" +
                 "                     <p id=\"price\">" +res.getString(AnimalList.getAnimalList().get(id).getCost()) +"</p>\n" +
-                "                     <input type=\"image\" src=\"../../../../image/icon3.png\" id=\"buy\">\n" +
+                "                     <a href=\"/jsp/basket.jsp\"><input type=\"image\" src=\"../image/icon3.png\" class=\"buy\"></a>\n" +
                 "                 </div>\n" +
                 "                 <div class=\"cat\">\n" +
                 "                     <img src = \"../../../../"+AnimalList.getAnimalList().get(id).getImg()+".jpg\" width=\"250\" height=\"200\">\n" +

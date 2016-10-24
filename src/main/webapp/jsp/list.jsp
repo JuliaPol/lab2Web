@@ -29,6 +29,8 @@
         } else {
             locale = Locale.getDefault();
         }
+        Cookie cookie1 = new Cookie("lang", lang);
+        response.addCookie(cookie1);
         String type = request.getParameter("type");
         Cookie[] cookies = request.getCookies();
         ResourceBundle res = ResourceBundle.getBundle("Shop", locale);
@@ -79,11 +81,13 @@
                         if (type == null) {
                             type = "all";
                             Cookie cookie = new Cookie("type", type);
+                            cookie.setMaxAge(15);
                             response.addCookie(cookie);
                         }
                     }
                 } else {
                     Cookie cookie = new Cookie("type", type);
+                    cookie.setMaxAge(15);
                     response.addCookie(cookie);
                 }
             %>

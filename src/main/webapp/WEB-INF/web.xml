@@ -9,7 +9,7 @@
         <servlet-class>servlets.MyServlet</servlet-class>
         <init-param>
             <param-name>paramOne</param-name>
-            <param-value>1</param-value>
+            <param-value>2</param-value>
         </init-param>
     </servlet>
 

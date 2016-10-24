@@ -1,3 +1,6 @@
+
+<%@ taglib prefix="f" uri="/tld/tag1.tld" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Julia
@@ -5,7 +8,7 @@
   Time: 13:06
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <html>
 <head>
     <title>Title</title>
@@ -17,7 +20,7 @@
         <div class="description"> <p><jsp:getProperty name="animalId" property="description"/></p></div>
         <div class="price1">
             <p id="price1"><jsp:getProperty name="animalId" property="cost"/></p>
-            <input type="image" src="../image/icon3.png" id="buy">
+            <a href="/jsp/basket.jsp"><input type="image" src="../image/icon3.png" class="buy" onclick="${f: addElem(animalId)}"></a>
         </div>
     </div>
 </body>

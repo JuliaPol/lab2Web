@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class="hat">
-        <a href = "#"> <img src = "../image/logo.png" width="90" height="70"></a>
+        <a href = "/"> <img src = "../image/logo.png" width="90" height="70"></a>
         <h3>PetShop</h3>
         <div class="basket">
             <a href="#" class="button1"><%=res.getString("login")%></a>
             <a href="#" class="button1"><%=res.getString("history")%></a>
-            <a href="#"><img src="../image/basket.png"></a>
+            <a href="/jsp/basket.jsp"> <img src="../image/basket.png"></a>
         </div>
         <div class="language">
             <a href = "?lang=ru"> <img src = "../image/russia.png" width="30" height="30"></a>
