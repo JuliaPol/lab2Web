@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
-<%@ taglib prefix="f" uri="/tld/tag1.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
+<%@ taglib prefix="f" uri="/WEB-INF/tld/tag1.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
@@ -16,7 +16,14 @@
     <link href="https://fonts.googleapis.com/css?family=Kurale" rel="stylesheet">
     <script src="../js/script.js"></script>
     <c:if test="${empty pageContext.request.parameterMap.lang[0]}">
-        <fmt:setLocale value="ru_RU"/>
+        <c:choose>
+            <c:when test="${empty cookie.lang.value}">
+                <fmt:setLocale value="ru_RU"/>
+            </c:when>
+            <c:otherwise>
+                <fmt:setLocale value="${cookie.lang.value}"/>
+            </c:otherwise>
+        </c:choose>
     </c:if>
     <c:if test="${pageContext.request.parameterMap.lang[0] eq 'ru'}">
         <fmt:setLocale value="ru_RU"/>
@@ -28,10 +35,11 @@
         <fmt:setLocale value="be_BY"/>
     </c:if>
     <fmt:setBundle basename="Shop"/>
+    <jsp:useBean id="basket" class="bean1.BasketList" scope="session" />
     <title><fmt:message key="title"/></title>
 </head>
 <body>
-    <div class="body">
+    <div class="body2">
         <div class="hat">
             <a href = "/"> <img src = "../image/logo.png" width="90" height="70"></a>
             <h3>PetShop</h3>
@@ -39,6 +47,7 @@
                 <a href="#" class="button1"><fmt:message key="login" /></a>
                 <a href="#" class="button1"><fmt:message key="history" /></a>
                 <a href="/jsp/basket.jsp"><img src="../image/basket.png"></a>
+                <p id="productsInBasket"> ${f:getSize()} </p>
             </div>
             <div class="language">
                 <a href = "?lang=ru"> <img src = "../image/russia.png" width="30" height="30"></a>
@@ -48,23 +57,36 @@
         </div>
         <div class="hBasket">
             <h3 id="hBasket"><fmt:message key="basket"/></h3>
-            <input type="button" id="button2" value="<fmt:message key="clearBasket"/>">
+            <form action="/s1" method="post">
+                <input type="submit" id="button2" name="idClear" value="<fmt:message key="clearBasket"/>">
+            </form>
         </div>
         <div class="goods">
-            <c:forEach var="product" items="${f: getProductList()}" >
-                ${f:getProductList()}
-                <c:import url="productInBasket.jsp" />
+            <c:forEach var="product" items="${f:getBasketList()}" >
+                <div class="productBasket">
+                    <h4><fmt:message key="${f: getAnimal(product.key).name}"/></h4>
+                    <p id="price2">${f: getAnimal(product.key).cost}</p>
+                    <div class="number">
+                        <form action="/s1" method="post">
+                            <input name="idM" type="image" src="../image/minus-big-symbol.png" value="${product.key}" >
+                        </form>
+                        <input type="text" value="${product.value}" size="3"/>
+                        <form action="/s1" method="post">
+                            <input name="idP" type="image" src="../image/add-icon.png" value="${product.key}">
+                        </form>
+                    </div>
+                    <img src="${f: getAnimal(product.key).img}.jpg" width="200px" height="150px">
+                    <p class="description1"><fmt:message key="${f: getAnimal(product.key).description}"/></p>
+                </div>
             </c:forEach>
         </div>
         <div class="order">
             <h3><fmt:message key="youOrder"/></h3>
             <h4><fmt:message key="allOrder"/></h4>
-            <h4 id="countOrder">${countOrder}</h4>
-            <h4 id="sum">${sumPrice}</h4>
+            <h4 id="countOrder">${f:getSize()}</h4>
+            <h4 id="sum">${f:getSum()}</h4>
             <input type="button" id="button3" value="<fmt:message key="checkout"/>">
         </div>
     </div>
-
-
 </body>
 </html>

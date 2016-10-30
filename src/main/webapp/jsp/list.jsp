@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.io.*,java.util.*" %>
-<%@ page import="bean1.AnimalList" %>
-<%@ page import="bean1.Animal" %>
+<%@ page import="bean1.*" %>
+<%@ taglib prefix="f" uri="/WEB-INF/tld/tag1.tld" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,6 +19,16 @@
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String lang = request.getParameter("lang");
+        String type = request.getParameter("type");
+        Cookie[] cookies = request.getCookies();
+        if(lang == null) {
+            for (int i = 0; i < cookies.length; i++) {
+                if ("lang".equals(cookies[i].getName())) {
+                    lang = cookies[i].getValue();
+                    break;
+                }
+            }
+        }
         Locale locale;
         if ("en".equals(lang)) {
             locale = new Locale("en", "GB");
@@ -31,15 +41,13 @@
         }
         Cookie cookie1 = new Cookie("lang", lang);
         response.addCookie(cookie1);
-        String type = request.getParameter("type");
-        Cookie[] cookies = request.getCookies();
         ResourceBundle res = ResourceBundle.getBundle("Shop", locale);
         AnimalList.deleteList();
-        AnimalList.addElem(new Animal("cats", "name1", "about1", "../image/cat-1044750_640", "../image/cat-1692702_640", "../image/cat-1692794_640", "mon"));
-        AnimalList.addElem(new Animal("cats", "name2", "about11", "../image/kiti1", "../image/kiti2", "../image/kiti3", "mon1"));
-        AnimalList.addElem(new Animal("dogs", "name5", "about14", "../image/span1", "../image/span2", "../image/span3", "mon4"));
-        AnimalList.addElem(new Animal("birds", "name3", "about12", "../image/pop1", "../image/pop2", "../image/pop3", "mon2"));
-        AnimalList.addElem(new Animal("dogs", "name4", "about13", "../image/dog1", "../image/dog2", "../image/dog3", "mon3"));
+        AnimalList.addElem(new Animal("cats", "name1", "about1", "../image/cat-1044750_640", "../image/cat-1692702_640", "../image/cat-1692794_640", 10000));
+        AnimalList.addElem(new Animal("cats", "name2", "about11", "../image/kiti1", "../image/kiti2", "../image/kiti3", 3000));
+        AnimalList.addElem(new Animal("dogs", "name5", "about14", "../image/span1", "../image/span2", "../image/span3", 17000));
+        AnimalList.addElem(new Animal("birds", "name3", "about12", "../image/pop1", "../image/pop2", "../image/pop3", 2000));
+        AnimalList.addElem(new Animal("dogs", "name4", "about13", "../image/dog1", "../image/dog2", "../image/dog3", 9000));
         ArrayList<Animal> animalList1 = AnimalList.getAnimalList();
     %>
     <title><%=res.getString("title")%>
@@ -101,7 +109,7 @@
                                     animalId.setName(res.getString(animalList1.get(i).getName()));
                                     animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
                                     animalId.setImg(animalList1.get(i).getImg());
-                                    animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                    animalId.setCost(animalList1.get(i).getCost());
                                     animalId.setId(animalList1.get(i).getId());
                                     animalId.setType(animalList1.get(i).getType());
             %>
@@ -116,7 +124,7 @@
                                     animalId.setName(res.getString(animalList1.get(i).getName()));
                                     animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
                                     animalId.setImg(animalList1.get(i).getImg());
-                                    animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                    animalId.setCost(animalList1.get(i).getCost());
                                     animalId.setId(animalList1.get(i).getId());
                                     animalId.setType(animalList1.get(i).getType());
                     %>
@@ -131,7 +139,7 @@
                                     animalId.setName(res.getString(animalList1.get(i).getName()));
                                     animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
                                     animalId.setImg(animalList1.get(i).getImg());
-                                    animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                    animalId.setCost(animalList1.get(i).getCost());
                                     animalId.setId(animalList1.get(i).getId());
                                     animalId.setType(animalList1.get(i).getType());
                     %>
@@ -145,7 +153,7 @@
                                 animalId.setName(res.getString(animalList1.get(i).getName()));
                                 animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
                                 animalId.setImg(animalList1.get(i).getImg());
-                                animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                animalId.setCost(animalList1.get(i).getCost());
                                 animalId.setId(animalList1.get(i).getId());
                                 animalId.setType(animalList1.get(i).getType());
                     %>
@@ -158,7 +166,7 @@
                                 animalId.setName(res.getString(animalList1.get(i).getName()));
                                 animalId.setDescription(res.getString(animalList1.get(i).getDescription()));
                                 animalId.setImg(animalList1.get(i).getImg());
-                                animalId.setCost(res.getString(animalList1.get(i).getCost()));
+                                animalId.setCost(animalList1.get(i).getCost());
                                 animalId.setId(animalList1.get(i).getId());
                                 animalId.setType(animalList1.get(i).getType());
                     %>

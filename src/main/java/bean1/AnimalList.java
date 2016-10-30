@@ -20,4 +20,8 @@ public class AnimalList {
     public static ArrayList<Animal> getAnimalList() {
         return animalList;
     }
+
+    public static Animal getAnimal(int id) {
+        return animalList.get(id);
+    }
 }

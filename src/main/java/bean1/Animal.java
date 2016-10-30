@@ -12,7 +12,7 @@ public class Animal implements Serializable {
     private String img;
     private String img1;
     private String img2;
-    private String cost;
+    private int cost;
     private int id;
     private static int countElem = 0;
 
@@ -21,12 +21,12 @@ public class Animal implements Serializable {
         this.name = null;
         this.description = null;
         this.img = null;
-        this.cost = null;
+        this.cost = 0;
         this.id = countElem;
         countElem++;
     }
 
-    public Animal(String type, String name, String description, String img, String img1, String img2, String cost) {
+    public Animal(String type, String name, String description, String img, String img1, String img2, int cost) {
         this.type = type;
         this.name = name;
         this.description = description;
@@ -42,7 +42,7 @@ public class Animal implements Serializable {
         Animal.countElem = countElem;
     }
 
-    public String getCost() {
+    public int getCost() {
         return cost;
     }
 
@@ -58,7 +58,7 @@ public class Animal implements Serializable {
         return img2;
     }
 
-    public void setCost(String cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 

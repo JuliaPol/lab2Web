@@ -17,6 +17,7 @@
             <a href="#" class="button1"><%=res.getString("login")%></a>
             <a href="#" class="button1"><%=res.getString("history")%></a>
             <a href="/jsp/basket.jsp"> <img src="../image/basket.png"></a>
+            <p id="productsInBasket"> ${f:getSize()}</p>
         </div>
         <div class="language">
             <a href = "?lang=ru"> <img src = "../image/russia.png" width="30" height="30"></a>

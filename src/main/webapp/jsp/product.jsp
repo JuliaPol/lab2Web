@@ -1,6 +1,7 @@
-
-<%@ taglib prefix="f" uri="/tld/tag1.tld" %>
-
+<%@ taglib prefix="f" uri="/WEB-INF/tld/tag1.tld" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="bean1.AnimalList" %>
+<%@ page import="bean1.Animal" %>
 <%--
   Created by IntelliJ IDEA.
   User: Julia
@@ -20,7 +21,9 @@
         <div class="description"> <p><jsp:getProperty name="animalId" property="description"/></p></div>
         <div class="price1">
             <p id="price1"><jsp:getProperty name="animalId" property="cost"/></p>
-            <a href="/jsp/basket.jsp"><input type="image" src="../image/icon3.png" class="buy" onclick="${f: addElem(animalId)}"></a>
+            <form action="/s1" method="post">
+                <input name="id" type="image" src="../image/icon3.png" class="buy" value ="<jsp:getProperty name="animalId" property="id"/>">
+            </form>
         </div>
     </div>
 </body>

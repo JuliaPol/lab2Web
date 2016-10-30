@@ -4,6 +4,7 @@
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     background-image: url(../image/fon1.jpg);
     background-repeat: repeat;
     width: auto;
@@ -16,12 +17,26 @@
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     background-image: url(../image/fon1.jpg);
     background-repeat: repeat;
     width: auto;
     z-index: 1;
     overflow: visible;
     height: 2200px;
+}
+.body2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../image/fon1.jpg);
+    background-repeat: repeat;
+    width: auto;
+    z-index: 1;
+    overflow: visible;
+    height: 1700px;
 }
 .hat {
     position: fixed;
@@ -276,7 +291,7 @@ a.button1:active {
     border-radius: 100px;
     transition:all 400ms;
     position: relative;
-    right: -90px;
+    right: -70px;
 }
 .price1 a {
     position: relative;
@@ -347,12 +362,14 @@ option {
     width: 100%;
 }
 .goods {
+    font-family: 'Kurale';
     position: relative;
-    top: 60px;
+    top: 55px;
     width: 50%;
-    background-color: rgba(240, 239, 245, 0.92);
+    background-color: rgba(244, 246, 253, 0.93);
     left: 100px;
     border-radius: 15px;
+    height: 80%;
 }
 #button2 {
     position: relative;
@@ -370,6 +387,7 @@ option {
     cursor: pointer;
 }
 .order {
+    font-family: 'Kurale';
     position: fixed;
     float: right;
     top: 160px;
@@ -439,31 +457,62 @@ option {
 .productBasket {
     position: relative;
     margin: 20px;
+    width: 200px;
+    height: 150px;
+    bottom: 10px;
+    top: 10px;
+    padding-bottom: 70px;
 }
 .productBasket h4 {
     position: relative;
-    top: 20px;
     height: 35px;
     width: 200px;
+    font-size: 20px;
+    top: 50px;
 }
 #price2 {
     width: 200px;
     position: relative;
     float: right;
+    top: -20px;
+    font-size: 18px;
+    left: 240%;
 }
 .number {
     position: relative;
-    top: 90px;
-    left: 80%;
+    top: 110px;
+    left: 200%;
+    display: inline-flex;
 }
-.productBasket {
+.productBasket{
     width: 200px;
     height: 150px;
     position: relative;
     bottom: 10px;
 }
 .description1 {
-    position: relative;
+    position: absolute;
     float: right;
-    width: 40%;
+    width: 160%;
+    top: 100px;
+    left: 150%;
+    font-size: 18px;
+}
+#productsInBasket {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    text-align: center;
+    float: right;
+    top: 8px;
+    font-size: 20px;
+    background-color: rgba(244, 246, 253, 0.7);
+    border-radius: 65px;
+}
+.productBasket img {
+    position: relative;
+    top: -50px;
+}
+.productBasket input {
+    height: 20px;
 }

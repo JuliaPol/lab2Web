@@ -39,6 +39,11 @@
             <artifactId>javax.el-api</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations-java5</artifactId>
+            <version>15.0</version>
+        </dependency>
 
     </dependencies>
     <build>
