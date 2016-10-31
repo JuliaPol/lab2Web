@@ -363,8 +363,8 @@ option {
 }
 .goods {
     font-family: 'Kurale';
-    position: relative;
-    top: 55px;
+    position: absolute;
+    top: 160px;
     width: 50%;
     background-color: rgba(244, 246, 253, 0.93);
     left: 100px;

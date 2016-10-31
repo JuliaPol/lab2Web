@@ -16,6 +16,10 @@
         <servlet-name>BasketServlet</servlet-name>
         <servlet-class>servlets.BasketServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>servlets.AuthServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
         <url-pattern>/s</url-pattern>
@@ -24,9 +28,33 @@
         <servlet-name>BasketServlet</servlet-name>
         <url-pattern>/s1</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/s2</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>/jsp/list.jsp</welcome-file>
     </welcome-file-list>
+
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/s2</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-role>
+        <role-name>user</role-name>
+    </security-role>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/jsp/auth.jsp</form-login-page>
+            <form-error-page>/jsp/auth-error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
 
 </web-app>

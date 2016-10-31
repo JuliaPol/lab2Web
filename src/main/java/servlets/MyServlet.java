@@ -85,7 +85,7 @@ public class MyServlet extends HttpServlet {
                 "                <a href = \"/\"> <img src = \"../../../../image/logo.png\" width=\"90\" height=\"70\"></a> \n" +
                 "                <h3>PetShop</h3>\n" +
                 "                <div class=\"basket\">\n" +
-                "                   <a href=\"#\" class=\"button1\">"+res.getString("login") +"</a>\n" +
+                "                   <a href=\"/s2?page=s&id="+id+"\" class=\"button1\">"+res.getString("login") +"</a>\n" +
                 "                   <a href=\"#\" class=\"button1\">"+res.getString("history") +"</a>\n"+
                 "                   <a href=\"/jsp/basket.jsp\" ><img src=\"../../../../image/basket.png\"></a>\n" +
                 "                   <p id=\"productsInBasket\">" + BasketList.getSize() +"</p>\n"+

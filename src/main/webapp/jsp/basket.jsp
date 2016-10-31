@@ -44,7 +44,7 @@
             <a href = "/"> <img src = "../image/logo.png" width="90" height="70"></a>
             <h3>PetShop</h3>
             <div class="basket">
-                <a href="#" class="button1"><fmt:message key="login" /></a>
+                <a href="/s2?page=bas" class="button1"><fmt:message key="login" /></a>
                 <a href="#" class="button1"><fmt:message key="history" /></a>
                 <a href="/jsp/basket.jsp"><img src="../image/basket.png"></a>
                 <p id="productsInBasket"> ${f:getSize()} </p>
@@ -77,6 +77,7 @@
                     </div>
                     <img src="${f: getAnimal(product.key).img}.jpg" width="200px" height="150px">
                     <p class="description1"><fmt:message key="${f: getAnimal(product.key).description}"/></p>
+                    <hr>
                 </div>
             </c:forEach>
         </div>
@@ -85,7 +86,7 @@
             <h4><fmt:message key="allOrder"/></h4>
             <h4 id="countOrder">${f:getSize()}</h4>
             <h4 id="sum"><fmt:message key="sum"/>: ${f:getSum()}</h4>
-            <input type="button" id="button3" value="<fmt:message key="checkout"/>">
+            <a href="/s2?page=order"><input type="button" id="button3" value="<fmt:message key="checkout"/>"></a>
         </div>
     </div>
 </body>

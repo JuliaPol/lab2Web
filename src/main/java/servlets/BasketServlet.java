@@ -17,7 +17,6 @@ public class BasketServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         BasketList bean = BasketList.get(session);
-        request.getRemoteAddr();
         String value = request.getParameter("id");
         if (value == null) {
             value = request.getParameter("idP");

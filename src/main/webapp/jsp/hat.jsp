@@ -14,7 +14,7 @@
         <a href = "/"> <img src = "../image/logo.png" width="90" height="70"></a>
         <h3>PetShop</h3>
         <div class="basket">
-            <a href="#" class="button1"><%=res.getString("login")%></a>
+            <a href="/s2?page=list" class="button1"><%=res.getString("login")%></a>
             <a href="#" class="button1"><%=res.getString("history")%></a>
             <a href="/jsp/basket.jsp"> <img src="../image/basket.png"></a>
             <p id="productsInBasket"> ${f:getSize()}</p>
