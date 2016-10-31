@@ -30,7 +30,7 @@ public class BasketServlet extends HttpServlet {
                         response.sendRedirect("/");
                     } else {
                         bean.addItem(Integer.parseInt(value));
-                        response.sendRedirect("/s");
+                        response.sendRedirect("/s?id="+value+"");
                     }
                 } else {
                     bean.deleteItem(Integer.parseInt(value));

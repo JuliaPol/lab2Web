@@ -56,11 +56,11 @@ public class MyServlet extends HttpServlet {
             }
         }
         Locale locale;
-        if ("en".equals(lang)) {
+        if ("en_GB".equals(lang)) {
             locale = new Locale("en", "GB");
-        } else if ("ru".equals(lang)) {
+        } else if ("ru_RU".equals(lang)) {
             locale = Locale.getDefault();
-        } else if ("be".equals(lang)) {
+        } else if ("be_BY".equals(lang)) {
             locale = new Locale("be", "BY");
         } else {
             locale = Locale.getDefault();
@@ -91,9 +91,9 @@ public class MyServlet extends HttpServlet {
                 "                   <p id=\"productsInBasket\">" + BasketList.getSize() +"</p>\n"+
                 "                </div>\n" +
                 "                <div class=\"language\"> \n" +
-                "                    <a href = \"s?id="+id+"&lang=ru\"> <img src = \"../../../../image/russia.png\" width=\"30\" height=\"30\"></a> \n" +
-                "                    <a href = \"s?id="+id+"&lang=en\"> <img src = \"../../../../image/england.png\" width=\"30\" height=\"30\"></a> \n" +
-                "                    <a href = \"s?id="+id+"&lang=be\"> <img src = \"../../../../image/belarus.png\" width=\"30\" height=\"30\"></a> \n" +
+                "                    <a href = \"s?id="+id+"&lang=ru_RU\"> <img src = \"../../../../image/russia.png\" width=\"30\" height=\"30\"></a> \n" +
+                "                    <a href = \"s?id="+id+"&lang=en_GB\"> <img src = \"../../../../image/england.png\" width=\"30\" height=\"30\"></a> \n" +
+                "                    <a href = \"s?id="+id+"&lang=be_BY\"> <img src = \"../../../../image/belarus.png\" width=\"30\" height=\"30\"></a> \n" +
                 "                </div>\n" +
                 "            </div>");
         sb.append(" <div class=\"card\"> \n" +

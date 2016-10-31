@@ -25,13 +25,13 @@
             </c:otherwise>
         </c:choose>
     </c:if>
-    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'ru'}">
+    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'ru_RU'}">
         <fmt:setLocale value="ru_RU"/>
     </c:if>
-    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'en'}">
+    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'en_GB'}">
         <fmt:setLocale value="en_GB"/>
     </c:if>
-    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'be'}">
+    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'be_BY'}">
         <fmt:setLocale value="be_BY"/>
     </c:if>
     <fmt:setBundle basename="Shop"/>
@@ -50,9 +50,9 @@
                 <p id="productsInBasket"> ${f:getSize()} </p>
             </div>
             <div class="language">
-                <a href = "?lang=ru"> <img src = "../image/russia.png" width="30" height="30"></a>
-                <a href = "?lang=en"> <img src = "../image/england.png" width="30" height="30"></a>
-                <a href = "?lang=be"> <img src = "../image/belarus.png" width="30" height="30"></a>
+                <a href = "?lang=ru_RU" onclick="addCookie('ru_RU');"> <img src = "../image/russia.png" width="30" height="30"></a>
+                <a href = "?lang=en_GB" onclick="addCookie('en_GB');"> <img src = "../image/england.png" width="30" height="30"></a>
+                <a href = "?lang=be_BY" onclick="addCookie('be_BY');"> <img src = "../image/belarus.png" width="30" height="30"></a>
             </div>
         </div>
         <div class="hBasket">
@@ -84,7 +84,7 @@
             <h3><fmt:message key="youOrder"/></h3>
             <h4><fmt:message key="allOrder"/></h4>
             <h4 id="countOrder">${f:getSize()}</h4>
-            <h4 id="sum">${f:getSum()}</h4>
+            <h4 id="sum"><fmt:message key="sum"/>: ${f:getSum()}</h4>
             <input type="button" id="button3" value="<fmt:message key="checkout"/>">
         </div>
     </div>

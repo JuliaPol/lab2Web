@@ -20,9 +20,9 @@
             <p id="productsInBasket"> ${f:getSize()}</p>
         </div>
         <div class="language">
-            <a href = "?lang=ru"> <img src = "../image/russia.png" width="30" height="30"></a>
-            <a href = "?lang=en"> <img src = "../image/england.png" width="30" height="30"></a>
-            <a href = "?lang=be"> <img src = "../image/belarus.png" width="30" height="30"></a>
+            <a href = "?lang=ru_RU"> <img src = "../image/russia.png" width="30" height="30"></a>
+            <a href = "?lang=en_GB"> <img src = "../image/england.png" width="30" height="30"></a>
+            <a href = "?lang=be_BY"> <img src = "../image/belarus.png" width="30" height="30"></a>
         </div>
     </div>
 </body>

@@ -1,7 +1,5 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/tag1.tld" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="bean1.AnimalList" %>
-<%@ page import="bean1.Animal" %>
 <%--
   Created by IntelliJ IDEA.
   User: Julia

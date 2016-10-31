@@ -25,16 +25,15 @@
             for (int i = 0; i < cookies.length; i++) {
                 if ("lang".equals(cookies[i].getName())) {
                     lang = cookies[i].getValue();
-                    break;
                 }
             }
         }
         Locale locale;
-        if ("en".equals(lang)) {
+        if ("en_GB".equals(lang)) {
             locale = new Locale("en", "GB");
-        } else if ("ru".equals(lang)) {
+        } else if ("ru_RU".equals(lang)) {
             locale = Locale.getDefault();
-        } else if ("be".equals(lang)) {
+        } else if ("be_BY".equals(lang)) {
             locale = new Locale("be", "BY");
         } else {
             locale = Locale.getDefault();
