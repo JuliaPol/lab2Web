@@ -27,12 +27,15 @@
     </c:if>
     <c:if test="${pageContext.request.parameterMap.lang[0] eq 'ru_RU'}">
         <fmt:setLocale value="ru_RU"/>
+        <c:set var="lang" value="ru_RU"/>
     </c:if>
     <c:if test="${pageContext.request.parameterMap.lang[0] eq 'en_GB'}">
         <fmt:setLocale value="en_GB"/>
+        <c:set var="lang" value="en_GB"/>
     </c:if>
     <c:if test="${pageContext.request.parameterMap.lang[0] eq 'be_BY'}">
         <fmt:setLocale value="be_BY"/>
+        <c:set var="lang" value="be_BY"/>
     </c:if>
     <fmt:setBundle basename="Shop"/>
     <jsp:useBean id="basket" class="bean1.BasketList" scope="session" />
@@ -42,11 +45,11 @@
 <body>
     <div class="body2">
         <div class="hat">
-            <a href = "/"> <img src = "../image/logo.png" width="90" height="70"></a>
+            <a href = "/?lang=${lang}"> <img src = "../image/logo.png" width="90" height="70"></a>
             <h3>PetShop</h3>
             <div class="basket">
                 <c:if test="${user.auth==null}">
-                    <a href="/s2?page=bas" class="button1"><fmt:message key="login" /></a>
+                    <a href="/s2?page=bas&lang=${lang}" class="button1"><fmt:message key="login" /></a>
                 </c:if>
                 <c:if test="${user.auth=='1'}">
                     <a href="/jsp/office.jsp" class="aBas">${user.name}</a>

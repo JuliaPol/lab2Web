@@ -53,6 +53,7 @@
     <title><%=res.getString("title")%>
     </title>
     <jsp:useBean id="animalId" class="bean1.Animal" scope="page"/>
+    <jsp:useBean id="basket" class="bean1.BasketList" scope="session" />
 </head>
 <body>
 <div class="body1">

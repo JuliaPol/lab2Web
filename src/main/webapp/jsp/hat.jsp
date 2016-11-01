@@ -18,14 +18,14 @@
         <h3>PetShop</h3>
         <div class="basket">
             <c:if test="${user.auth==null}">
-                <a href="/s2?page=list" class="button1"><%=res.getString("login")%></a>
+                <a href="/s2?page=list&lang=<%=lang%>" class="button1"><%=res.getString("login")%></a>
             </c:if>
             <c:if test="${user.auth=='1'}">
                 <a href="/jsp/office.jsp" class="aBas">${user.name}</a>
                 <a href="/s3?page=list" class="button1"><%=res.getString("logout")%></a>
             </c:if>
             <a href="#" class="button1"><%=res.getString("history")%></a>
-            <a href="/jsp/basket.jsp"> <img src="../image/basket.png"></a>
+            <a href="/jsp/basket.jsp?lang=<%=lang%>"> <img src="../image/basket.png"></a>
             <p id="productsInBasket"> ${f:getSize()}</p>
         </div>
         <div class="language">

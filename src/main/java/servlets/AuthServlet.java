@@ -34,19 +34,23 @@ public class AuthServlet extends HttpServlet {
         user.setName(request.getRemoteUser());
         user.setAuth("1");
         String value = request.getParameter("page");
+        String lang = request.getParameter("lang");
         switch (value) {
             case "s":
                 String id = request.getParameter("id");
-                response.sendRedirect("/s?id=" + id);
+                response.sendRedirect("/s?id=" + id +"&lang="+lang);
                 break;
             case "list":
-                response.sendRedirect("/");
+                response.sendRedirect("/?lang="+lang);
                 break;
             case "bas":
-                response.sendRedirect("/jsp/basket.jsp");
+                response.sendRedirect("/jsp/basket.jsp?lang="+lang);
                 break;
             case "order":
-                response.sendRedirect("/jsp/order.jsp");
+                response.sendRedirect("/jsp/order.jsp?lang="+lang);
+                break;
+            default:
+                response.sendRedirect("/?lang="+lang);
                 break;
         }
     }

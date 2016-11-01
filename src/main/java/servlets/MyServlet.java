@@ -99,7 +99,7 @@ public class MyServlet extends HttpServlet {
                 "                <h3>PetShop</h3>\n" +
                 "                <div class=\"basket\">\n" +
                 "                   <a href=\"/jsp/office.jsp\" class=\"aBas\">" + userName + "</a>\n" +
-                "                   <a href=\"/s" + numServlet + "?page=s&id=" + id + "\" class=\"button1\">" + res.getString(log) + "</a>\n" +
+                "                   <a href=\"/s" + numServlet + "?page=s&id=" + id + "&lang"+lang+"\" class=\"button1\">" + res.getString(log) + "</a>\n" +
                 "                   <a href=\"#\" class=\"button1\">" + res.getString("history") + "</a>\n" +
                 "                   <a href=\"/jsp/basket.jsp\" ><img src=\"../../../../image/basket.png\"></a>\n" +
                 "                   <p id=\"productsInBasket\">" + BasketList.getSize() + "</p>\n" +

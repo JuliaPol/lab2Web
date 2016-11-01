@@ -1,5 +1,6 @@
 package servlets;
 
+import bean1.BasketList;
 import bean1.User;
 
 import javax.servlet.ServletException;
@@ -28,8 +29,10 @@ public class ExitServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.invalidate();
         String value = request.getParameter("page");
+        BasketList bean = BasketList.get(session);
+        bean.clearBasket();
+        session.invalidate();
         switch (value) {
             case "s":
                 String id = request.getParameter("id");
