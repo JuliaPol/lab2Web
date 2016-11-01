@@ -36,6 +36,7 @@
     </c:if>
     <fmt:setBundle basename="Shop"/>
     <jsp:useBean id="basket" class="bean1.BasketList" scope="session" />
+    <jsp:useBean id="user" class="bean1.User" scope="session" />
     <title><fmt:message key="title"/></title>
 </head>
 <body>
@@ -44,7 +45,13 @@
             <a href = "/"> <img src = "../image/logo.png" width="90" height="70"></a>
             <h3>PetShop</h3>
             <div class="basket">
-                <a href="/s2?page=bas" class="button1"><fmt:message key="login" /></a>
+                <c:if test="${user.auth==null}">
+                    <a href="/s2?page=bas" class="button1"><fmt:message key="login" /></a>
+                </c:if>
+                <c:if test="${user.auth=='1'}">
+                    <a href="/jsp/office.jsp" class="aBas">${user.name}</a>
+                    <a href="/s3?page=bas" class="button1"><fmt:message key="logout" /></a>
+                </c:if>
                 <a href="#" class="button1"><fmt:message key="history" /></a>
                 <a href="/jsp/basket.jsp"><img src="../image/basket.png"></a>
                 <p id="productsInBasket"> ${f:getSize()} </p>

@@ -10,16 +10,17 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
     <fmt:setBundle basename="Shop"/>
     <div class="bodyAuth">
         <form class="auth" action="j_security_check" method="post" name="loginForm">
-            <label><fmt:message key="txtLogin" /></label><br>
-            <input type="text" name="j_username" placeholder="Name" size="20"/><br>
-            <label><fmt:message key="txtPassword" /></label><br>
-            <input type="password" name="j_password" size="20" placeholder="Password"/><br>
-            <input type="submit" value="Ввод"/>
+            <label class="authLab"><fmt:message key="txtLogin" /></label><br>
+            <input class="authInp" type="text" name="j_username" placeholder="Name" size="20"/><br>
+            <label class="authLab"><fmt:message key="txtPassword" /></label><br>
+            <input class="authInp" type="password" name="j_password" size="20" placeholder="Password"/><br>
+            <input class="authButt" type="submit" value="Ввод"/>
         </form>
     </div>
 </body>

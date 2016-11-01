@@ -11,11 +11,26 @@ public class User {
     private String mark;
 
     public User() {
-        this.auth="1";
     }
     public User(String name, String auth) {
         this.name = name;
         this.auth = auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAuth() {
+        return auth;
+    }
+
+    public String getMark() {
+        return mark;
     }
 
     public void setName(String name) {

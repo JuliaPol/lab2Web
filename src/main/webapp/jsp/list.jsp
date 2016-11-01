@@ -9,6 +9,7 @@
 <%@ page import="java.io.*,java.util.*" %>
 <%@ page import="bean1.*" %>
 <%@ taglib prefix="f" uri="/WEB-INF/tld/tag1.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

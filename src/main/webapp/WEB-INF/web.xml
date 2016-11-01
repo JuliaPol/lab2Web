@@ -20,6 +20,10 @@
         <servlet-name>AuthServlet</servlet-name>
         <servlet-class>servlets.AuthServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExitServlet</servlet-name>
+        <servlet-class>servlets.ExitServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
         <url-pattern>/s</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>AuthServlet</servlet-name>
         <url-pattern>/s2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExitServlet</servlet-name>
+        <url-pattern>/s3</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

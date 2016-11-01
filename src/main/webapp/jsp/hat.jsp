@@ -6,15 +6,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+    <jsp:useBean id="user" class="bean1.User" scope="session" />
 </head>
 <body>
     <div class="hat">
         <a href = "/"> <img src = "../image/logo.png" width="90" height="70"></a>
         <h3>PetShop</h3>
         <div class="basket">
-            <a href="/s2?page=list" class="button1"><%=res.getString("login")%></a>
+            <c:if test="${user.auth==null}">
+                <a href="/s2?page=list" class="button1"><%=res.getString("login")%></a>
+            </c:if>
+            <c:if test="${user.auth=='1'}">
+                <a href="/jsp/office.jsp" class="aBas">${user.name}</a>
+                <a href="/s3?page=list" class="button1"><%=res.getString("logout")%></a>
+            </c:if>
             <a href="#" class="button1"><%=res.getString("history")%></a>
             <a href="/jsp/basket.jsp"> <img src="../image/basket.png"></a>
             <p id="productsInBasket"> ${f:getSize()}</p>

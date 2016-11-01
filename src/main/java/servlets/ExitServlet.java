@@ -1,6 +1,5 @@
 package servlets;
 
-
 import bean1.User;
 
 import javax.servlet.ServletException;
@@ -13,8 +12,7 @@ import java.io.IOException;
 /**
  * Created by Julia on 01.11.2016.
  */
-public class AuthServlet extends HttpServlet {
-
+public class ExitServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -30,9 +28,7 @@ public class AuthServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        User user = User.get(session);
-        user.setName(request.getRemoteUser());
-        user.setAuth("1");
+        session.invalidate();
         String value = request.getParameter("page");
         switch (value) {
             case "s":
@@ -46,7 +42,7 @@ public class AuthServlet extends HttpServlet {
                 response.sendRedirect("/jsp/basket.jsp");
                 break;
             case "order":
-                response.sendRedirect("/jsp/order.jsp");
+                response.sendRedirect("/");
                 break;
         }
     }
