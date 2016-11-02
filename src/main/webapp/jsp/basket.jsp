@@ -19,9 +19,11 @@
         <c:choose>
             <c:when test="${empty cookie.lang.value}">
                 <fmt:setLocale value="ru_RU"/>
+                <c:set var="lang" value="ru_RU"/>
             </c:when>
             <c:otherwise>
                 <fmt:setLocale value="${cookie.lang.value}"/>
+                <c:set var="lang" value="${cookie.lang.value}"/>
             </c:otherwise>
         </c:choose>
     </c:if>
@@ -52,11 +54,11 @@
                     <a href="/s2?page=bas&lang=${lang}" class="button1"><fmt:message key="login" /></a>
                 </c:if>
                 <c:if test="${user.auth=='1'}">
-                    <a href="/jsp/office.jsp" class="aBas">${user.name}</a>
+                    <a href="/s?page=office&lang=${lang}" class="aBas">${user.name}</a>
                     <a href="/s3?page=bas" class="button1"><fmt:message key="logout" /></a>
                 </c:if>
                 <a href="#" class="button1"><fmt:message key="history" /></a>
-                <a href="/jsp/basket.jsp"><img src="../image/basket.png"></a>
+                <a href="/jsp/basket.jsp?lang=${lang}"><img src="../image/basket.png"></a>
                 <p id="productsInBasket"> ${f:getSize()} </p>
             </div>
             <div class="language">
@@ -67,7 +69,7 @@
         </div>
         <div class="hBasket">
             <h3 id="hBasket"><fmt:message key="basket"/></h3>
-            <form action="/s1" method="post">
+            <form action="/s1?lang=${lang}" method="post">
                 <input type="submit" id="button2" name="idClear" value="<fmt:message key="clearBasket"/>">
             </form>
         </div>
@@ -77,11 +79,11 @@
                     <h4><fmt:message key="${f: getAnimal(product.key).name}"/></h4>
                     <p id="price2">${f: getAnimal(product.key).cost}</p>
                     <div class="number">
-                        <form action="/s1" method="post">
+                        <form action="/s1?lang=${lang}" method="post">
                             <input name="idM" type="image" src="../image/minus-big-symbol.png" value="${product.key}" >
                         </form>
                         <input type="text" value="${product.value}" size="3"/>
-                        <form action="/s1" method="post">
+                        <form action="/s1?lang=${lang}" method="post">
                             <input name="idP" type="image" src="../image/add-icon.png" value="${product.key}">
                         </form>
                     </div>

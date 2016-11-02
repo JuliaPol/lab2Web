@@ -21,7 +21,7 @@
                 <a href="/s2?page=list&lang=<%=lang%>" class="button1"><%=res.getString("login")%></a>
             </c:if>
             <c:if test="${user.auth=='1'}">
-                <a href="/jsp/office.jsp" class="aBas">${user.name}</a>
+                <a href="/s?page=office&lang=<%=lang%>" class="aBas">${user.name}</a>
                 <a href="/s3?page=list" class="button1"><%=res.getString("logout")%></a>
             </c:if>
             <a href="#" class="button1"><%=res.getString("history")%></a>

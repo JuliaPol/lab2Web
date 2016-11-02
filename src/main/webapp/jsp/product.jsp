@@ -19,7 +19,7 @@
         <div class="description"> <p><jsp:getProperty name="animalId" property="description"/></p></div>
         <div class="price1">
             <p id="price1"><jsp:getProperty name="animalId" property="cost"/></p>
-            <form action="/s1" method="post">
+            <form action="/s1?lang=<%=lang%>" method="post">
                 <input name="id" type="image" src="../image/icon3.png" class="buy" value ="<jsp:getProperty name="animalId" property="id"/>">
             </form>
         </div>

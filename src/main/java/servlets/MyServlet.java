@@ -8,6 +8,7 @@ import bean1.AnimalList;
 import bean1.BasketList;
 import bean1.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,6 +45,12 @@ public class MyServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String lang = request.getParameter("lang");
+        String page = request.getParameter("page");
+        if ("office".equals(page)) {
+            String paramOffice = param;
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/office1.jsp?lang="+lang+"&paramO="+paramOffice);
+            dispatcher.forward(request,response);
+        }
         int id = Integer.parseInt(request.getParameter("id"));
         Cookie[] cookies = request.getCookies();
         if (lang == null) {
@@ -98,7 +105,7 @@ public class MyServlet extends HttpServlet {
                 "                <a href = \"/\"> <img src = \"../../../../image/logo.png\" width=\"90\" height=\"70\"></a> \n" +
                 "                <h3>PetShop</h3>\n" +
                 "                <div class=\"basket\">\n" +
-                "                   <a href=\"/jsp/office.jsp\" class=\"aBas\">" + userName + "</a>\n" +
+                "                   <a href=\"s?page=office&lang="+lang+"\" class=\"aBas\">" + userName + "</a>\n" +
                 "                   <a href=\"/s" + numServlet + "?page=s&id=" + id + "&lang"+lang+"\" class=\"button1\">" + res.getString(log) + "</a>\n" +
                 "                   <a href=\"#\" class=\"button1\">" + res.getString("history") + "</a>\n" +
                 "                   <a href=\"/jsp/basket.jsp\" ><img src=\"../../../../image/basket.png\"></a>\n" +

@@ -16,22 +16,25 @@
             <%--</c:otherwise>--%>
         <%--</c:choose>--%>
         <fmt:setLocale value="ru_RU"/>
+        <c:set var="lang" value="ru_RU"/>
     </c:if>
     <c:if test="${pageContext.request.parameterMap.lang[0] eq 'ru_RU'}">
         <fmt:setLocale value="ru_RU"/>
+        <c:set var="lang" value="ru_RU"/>
     </c:if>
     <c:if test="${pageContext.request.parameterMap.lang[0] eq 'en_GB'}">
         <fmt:setLocale value="en_GB"/>
+        <c:set var="lang" value="eb_GB"/>
     </c:if>
     <c:if test="${pageContext.request.parameterMap.lang[0] eq 'be_BY'}">
         <fmt:setLocale value="be_BY"/>
+        <c:set var="lang" value="be_BY"/>
     </c:if>
     <fmt:setBundle basename="Shop"/>
 </head>
 <body>
     <div class="bodyAuth">
-        ${pageContext.request.parameterMap.page[0]}
-        <form class="auth" action="j_security_check" method="post" name="loginForm">
+        <form class="auth" action="j_security_check?lang=${lang}" method="post" name="loginForm">
             <div class="authLang">
                 <a href = "?page=${pageContext.request.parameterMap.page[0]}&lang=ru_RU" onclick="addCookie('ru_RU');"> <img src = "../image/russia.png" width="30" height="30"></a>
                 <a href = "?page=${pageContext.request.parameterMap.page[0]}&lang=en_GB" onclick="addCookie('en_GB');"> <img src = "../image/england.png" width="30" height="30"></a>

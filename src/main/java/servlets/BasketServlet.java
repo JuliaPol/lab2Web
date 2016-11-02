@@ -18,6 +18,7 @@ public class BasketServlet extends HttpServlet {
         HttpSession session = request.getSession();
         BasketList bean = BasketList.get(session);
         String value = request.getParameter("id");
+        String lang = request.getParameter("lang");
         if (value == null) {
             value = request.getParameter("idP");
             if (value == null) {
@@ -26,22 +27,22 @@ public class BasketServlet extends HttpServlet {
                     value = request.getParameter("idServlet");
                     if (value == null) {
                         bean.clearBasket();
-                        response.sendRedirect("/");
+                        response.sendRedirect("/"+"?lang="+lang);
                     } else {
                         bean.addItem(Integer.parseInt(value));
-                        response.sendRedirect("/s?id="+value+"");
+                        response.sendRedirect("/s?id="+value+"&lang="+lang);
                     }
                 } else {
                     bean.deleteItem(Integer.parseInt(value));
-                    response.sendRedirect("/jsp/basket.jsp");
+                    response.sendRedirect("/jsp/basket.jsp"+"?lang="+lang);
                 }
             } else {
                 bean.addItem(Integer.parseInt(value));
-                response.sendRedirect("/jsp/basket.jsp");
+                response.sendRedirect("/jsp/basket.jsp"+"?lang="+lang);
             }
         } else {
             bean.addItem(Integer.parseInt(value));
-            response.sendRedirect("/");
+            response.sendRedirect("/"+"?lang="+lang);
         }
     }
 
