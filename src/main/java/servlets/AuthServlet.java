@@ -47,7 +47,7 @@ public class AuthServlet extends HttpServlet {
                 response.sendRedirect("/jsp/basket.jsp?lang="+lang);
                 break;
             case "order":
-                response.sendRedirect("/jsp/order.jsp?lang="+lang);
+                response.sendRedirect("/s4?lang="+lang);
                 break;
             default:
                 response.sendRedirect("/?lang="+lang);

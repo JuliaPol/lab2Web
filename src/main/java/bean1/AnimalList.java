@@ -15,13 +15,13 @@ public class AnimalList {
     }
     public static void deleteList() {
         animalList.clear();
-        Animal.setCountElem(0);
+        Animal.setCountElem(1);
     }
     public static ArrayList<Animal> getAnimalList() {
         return animalList;
     }
 
     public static Animal getAnimal(int id) {
-        return animalList.get(id);
+        return animalList.get(id-1);
     }
 }

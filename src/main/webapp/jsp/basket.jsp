@@ -58,6 +58,9 @@
                     <a href="/s3?page=bas" class="button1"><fmt:message key="logout" /></a>
                 </c:if>
                 <a href="#" class="button1"><fmt:message key="history" /></a>
+                <c:if test="${f:getSize()>0}">
+                    <a href="/s2?page=order&lang=${lang}" class="button1"><fmt:message key="checkout"/></a>
+                </c:if>
                 <a href="/jsp/basket.jsp?lang=${lang}"><img src="../image/basket.png"></a>
                 <p id="productsInBasket"> ${f:getSize()} </p>
             </div>
@@ -98,7 +101,9 @@
             <h4><fmt:message key="allOrder"/></h4>
             <h4 id="countOrder">${f:getSize()}</h4>
             <h4 id="sum"><fmt:message key="sum"/>: ${f:getSum()}</h4>
-            <a href="/s2?page=order"><input type="button" id="button3" value="<fmt:message key="checkout"/>"></a>
+            <c:if test="${f:getSize()>0}">
+                <a href="/s2?page=order&lang=${lang}"><input type="button" id="button3" value="<fmt:message key="checkout"/>"></a>
+            </c:if>
         </div>
     </div>
 </body>

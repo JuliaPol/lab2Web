@@ -8,6 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.io.*,java.util.*" %>
 <%@ page import="bean1.*" %>
+<%@ page import="org.hibernate.Session" %>
+<%@ page import="hibernate.HibernateSessionFactory" %>
+<%@ page import="org.hibernate.Transaction" %>
+<%@ page import="hibernate.ProductEntity" %>
 <%@ taglib prefix="f" uri="/WEB-INF/tld/tag1.tld" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
@@ -43,11 +47,15 @@
         response.addCookie(cookie1);
         ResourceBundle res = ResourceBundle.getBundle("Shop", locale);
         AnimalList.deleteList();
-        AnimalList.addElem(new Animal("cats", "name1", "about1", "../image/cat-1044750_640", "../image/cat-1692702_640", "../image/cat-1692794_640", 10000));
-        AnimalList.addElem(new Animal("cats", "name2", "about11", "../image/kiti1", "../image/kiti2", "../image/kiti3", 3000));
-        AnimalList.addElem(new Animal("dogs", "name5", "about14", "../image/span1", "../image/span2", "../image/span3", 17000));
-        AnimalList.addElem(new Animal("birds", "name3", "about12", "../image/pop1", "../image/pop2", "../image/pop3", 2000));
-        AnimalList.addElem(new Animal("dogs", "name4", "about13", "../image/dog1", "../image/dog2", "../image/dog3", 9000));
+        Session session1 = HibernateSessionFactory.getSessionFactory().openSession();
+        Transaction tx = session1.beginTransaction();
+        List list = session1.createQuery("FROM ProductEntity").list();
+        for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+            ProductEntity cur = (ProductEntity) iterator.next();
+            AnimalList.addElem(new Animal(cur.getIdProduct(),cur.getType(), cur.getName(), cur.getDescription(), cur.getImg(), cur.getImg1(), cur.getImg2(), cur.getPrice()));
+        }
+        tx.commit();
+        session1.close();
         ArrayList<Animal> animalList1 = AnimalList.getAnimalList();
     %>
     <title><%=res.getString("title")%>
@@ -56,7 +64,7 @@
     <jsp:useBean id="basket" class="bean1.BasketList" scope="session" />
 </head>
 <body>
-<div class="body1">
+<div class="body1">1
     <%@include file="hat.jsp" %>
     <div class="card1">
         <div class="smallcard">

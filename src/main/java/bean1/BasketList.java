@@ -70,9 +70,9 @@ public class BasketList {
         for (Map.Entry<Integer, Integer> entry: basketList.entrySet()) {
             int id = entry.getKey();
             if(entry.getValue()>1) {
-                sum+=AnimalList.getAnimalList().get(id).getCost()*entry.getValue();
+                sum+=AnimalList.getAnimalList().get(id-1).getCost()*entry.getValue();
             } else {
-                sum+=AnimalList.getAnimalList().get(id).getCost();
+                sum+=AnimalList.getAnimalList().get(id-1).getCost();
             }
         }
         return sum;

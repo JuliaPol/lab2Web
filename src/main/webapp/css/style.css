@@ -78,7 +78,7 @@
     top: 30px;
 }
 .basket {
-    width: 450px;
+    width: 570px;
     height: 70px;
     position: absolute;
     top: 5px;
@@ -612,4 +612,18 @@ option {
 }
 .bodyAuth h1 {
     color: white;
+}
+.bodyOffice h1 {
+    position: absolute;
+    top: 70px;
+    left: 580px;
+
+}
+#map_canvas {
+    position: relative;
+    overflow: hidden;
+    top: 140px;
+    left: 100px;
+    width: 500px;
+    height: 500px;
 }

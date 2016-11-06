@@ -43,23 +43,22 @@
         <a href = "/?lang=${lang}"> <img src = "../image/logo.png" width="90" height="70"></a>
         <h3>PetShop</h3>
         <div class="basket">
-            <c:if test="${user.auth==null}">
-                <a href="/s2?page=list&lang=${lang}" class="button1"><fmt:message key="login" /></a>
-            </c:if>
-            <c:if test="${user.auth=='1'}">
-                <a href="/jsp/office.jsp?lang=${lang}" class="aBas">${user.name}</a>
-                <a href="/s3?page=list&lang=${lang}" class="button1"><fmt:message key="logout" /></a>
-            </c:if>
+            <a href="/s2?page=order&lang=${lang}" class="aBas">${user.name}</a>
+            <a href="/s3?page=list&lang=${lang}" class="button1"><fmt:message key="logout" /></a>
             <a href="#" class="button1"><fmt:message key="history" /></a>
+            <c:if test="${f:getSize()>0}">
+                <a href="/s2?page=order&lang=${lang}" class="button1"><fmt:message key="checkout"/></a>
+            </c:if>
             <a href="/jsp/basket.jsp?lang=${lang}"><img src="../image/basket.png"></a>
             <p id="productsInBasket"> ${f:getSize()} </p>
         </div>
         <div class="language">
-            <a href = "?lang=ru_RU" onclick="addCookie('ru_RU');"> <img src = "../image/russia.png" width="30" height="30"></a>
-            <a href = "?lang=en_GB" onclick="addCookie('en_GB');"> <img src = "../image/england.png" width="30" height="30"></a>
-            <a href = "?lang=be_BY" onclick="addCookie('be_BY');"> <img src = "../image/belarus.png" width="30" height="30"></a>
+            <a href = "?page=office&lang=ru_RU" onclick="addCookie('ru_RU');"> <img src = "../image/russia.png" width="30" height="30"></a>
+            <a href = "?page=office&lang=en_GB" onclick="addCookie('en_GB');"> <img src = "../image/england.png" width="30" height="30"></a>
+            <a href = "?page=office&lang=be_BY" onclick="addCookie('be_BY');"> <img src = "../image/belarus.png" width="30" height="30"></a>
         </div>
     </div>
+    <h1><fmt:message key="office"/></h1>
     <div class="userOffice">
         <h2><fmt:message key="yourName"/>${user.name}</h2>
         <h2><fmt:message key="mark" />${pageContext.request.parameterMap.paramO[0]}</h2>

@@ -25,6 +25,9 @@
                 <a href="/s3?page=list" class="button1"><%=res.getString("logout")%></a>
             </c:if>
             <a href="#" class="button1"><%=res.getString("history")%></a>
+            <c:if test="${f:getSize()>0}">
+                <a href="/s2?page=order&lang=<%=lang%>" class="button1"><%=res.getString("checkout")%></a>
+            </c:if>
             <a href="/jsp/basket.jsp?lang=<%=lang%>"> <img src="../image/basket.png"></a>
             <p id="productsInBasket"> ${f:getSize()}</p>
         </div>

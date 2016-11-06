@@ -89,6 +89,10 @@ public class MyServlet extends HttpServlet {
             log = "logout";
             userName = user.getName();
         }
+        String displayOrder ="";
+        if(BasketList.getSize()>0) {
+            displayOrder="<a href="+"/s2?page=order&lang="+lang+"\" class=\"button1\">"+res.getString("checkout")+"</a>";
+        }
         param1 = Integer.parseInt(param);
         StringBuilder sb = new StringBuilder();
         StringBuilder append = sb.append("<html>\n" +
@@ -108,6 +112,7 @@ public class MyServlet extends HttpServlet {
                 "                   <a href=\"s?page=office&lang="+lang+"\" class=\"aBas\">" + userName + "</a>\n" +
                 "                   <a href=\"/s" + numServlet + "?page=s&id=" + id + "&lang"+lang+"\" class=\"button1\">" + res.getString(log) + "</a>\n" +
                 "                   <a href=\"#\" class=\"button1\">" + res.getString("history") + "</a>\n" +
+                "                   "+ displayOrder +"\n"+
                 "                   <a href=\"/jsp/basket.jsp\" ><img src=\"../../../../image/basket.png\"></a>\n" +
                 "                   <p id=\"productsInBasket\">" + BasketList.getSize() + "</p>\n" +
                 "                </div>\n" +
@@ -120,17 +125,17 @@ public class MyServlet extends HttpServlet {
         sb.append(" <div class=\"card\"> \n" +
                 "                 <!--<input id=\"arrL\" type=\"image\" src=\"../../../../image/1.png\">\n" +
                 "                 <input id=\"arrR\" type=\"image\" src=\"../../../../image/2.png\">-->\n" +
-                "                 <h3>" + res.getString(AnimalList.getAnimalList().get(id).getName()) + "</h3>\n" +
+                "                 <h3>" + res.getString(AnimalList.getAnimalList().get(id-1).getName()) + "</h3>\n" +
                 "                 <div class=\"price\">\n" +
-                "                     <p id=\"price\">" + AnimalList.getAnimalList().get(id).getCost() + "</p>\n" +
+                "                     <p id=\"price\">" + AnimalList.getAnimalList().get(id-1).getCost() + "</p>\n" +
                 "                     <form action=\"/s1\" method=\"post\">\n" +
                 "                       <input name=\"idServlet\" type=\"image\" src=\"../image/icon3.png\" class=\"buy\" value =" + id + ">\n" +
                 "                     </form>\n" +
                 "                 </div>\n" +
                 "                 <div class=\"cat\">\n" +
-                "                     <img src = \"../../../../" + AnimalList.getAnimalList().get(id).getImg() + ".jpg\" width=\"250\" height=\"200\">\n" +
-                "                     <img src=\"../../../../" + AnimalList.getAnimalList().get(id).getImg1() + ".jpg\" width=\"250\" height=\"200\">\n" +
-                "                     <img src=\"../../../../" + AnimalList.getAnimalList().get(id).getImg2() + ".jpg\" width=\"250\" height=\"200\">\n" +
+                "                     <img src = \"../../../../" + AnimalList.getAnimalList().get(id-1).getImg() + ".jpg\" width=\"250\" height=\"200\">\n" +
+                "                     <img src=\"../../../../" + AnimalList.getAnimalList().get(id-1).getImg1() + ".jpg\" width=\"250\" height=\"200\">\n" +
+                "                     <img src=\"../../../../" + AnimalList.getAnimalList().get(id-1).getImg2() + ".jpg\" width=\"250\" height=\"200\">\n" +
                 "                 </div>\n" +
                 "                 <div class=\"nav\">\n" +
                 "                     <ul>\n" +
@@ -141,7 +146,7 @@ public class MyServlet extends HttpServlet {
                 "                 </div>\n" +
                 "                 <div class=\"view\" name=\"v\">\n" +
                 "                     <div id=\"view1\" class=\"specification\" style=\"display:" + ((param1 == 1) ? "block;" : "none;") + "\">\n" +
-                "                         <p> " + res.getString(AnimalList.getAnimalList().get(id).getDescription()) + "</p>\n" +
+                "                         <p> " + res.getString(AnimalList.getAnimalList().get(id-1).getDescription()) + "</p>\n" +
                 "                         <p> " + res.getString("about2") + "</p>\n" +
                 "                     </div>\n" +
                 "                     <div id=\"characteristics\" class=\"specification\" style=\"display:" + ((param1 == 2) ? "block;" : "none;") + "\">\n" +

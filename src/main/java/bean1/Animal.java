@@ -14,7 +14,7 @@ public class Animal implements Serializable {
     private String img2;
     private int cost;
     private int id;
-    private static int countElem = 0;
+    private static int countElem = 1;
 
     public Animal() {
         this.type = null;
@@ -26,7 +26,7 @@ public class Animal implements Serializable {
         countElem++;
     }
 
-    public Animal(String type, String name, String description, String img, String img1, String img2, int cost) {
+    public Animal(int id, String type, String name, String description, String img, String img1, String img2, int cost) {
         this.type = type;
         this.name = name;
         this.description = description;
@@ -34,7 +34,7 @@ public class Animal implements Serializable {
         this.img1 = img1;
         this.img2 = img2;
         this.cost = cost;
-        this.id = countElem;
+        this.id = id;
         countElem++;
     }
 

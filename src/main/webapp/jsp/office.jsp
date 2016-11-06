@@ -18,24 +18,6 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Kurale" rel="stylesheet">
     <script src="../js/script.js"></script>
-    <jsp:useBean id="user" class="bean1.User" scope="session" />
-    <jsp:useBean id="basket" class="bean1.BasketList" scope="session" />
-    <c:if test="${empty pageContext.request.parameterMap.lang[0]}">
-        <c:set var="lang" value="ru_RU"/>
-    </c:if>
-    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'ru_RU'}">
-        <fmt:setLocale value="ru_RU"/>
-        <c:set var="lang" value="ru_RU"/>
-    </c:if>
-    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'en_GB'}">
-        <fmt:setLocale value="en_GB"/>
-        <c:set var="lang" value="en_GB"/>
-    </c:if>
-    <c:if test="${pageContext.request.parameterMap.lang[0] eq 'be_BY'}">
-        <fmt:setLocale value="be_BY"/>
-        <c:set var="lang" value="be_BY"/>
-    </c:if>
-    <fmt:setBundle basename="Shop"/>
 </head>
 <body>
     <jsp:forward page="/s">
