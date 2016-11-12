@@ -2,6 +2,12 @@ package servlets;
 
 
 import bean1.User;
+import dao.HibernateSessionFactory;
+import dao.OrderDao;
+import entities.Order1Entity;
+import entities.ProductEntity;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,12 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Julia on 01.11.2016.
  */
 public class AuthServlet extends HttpServlet {
 
+    OrderDao orderDao = new OrderDao();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -35,7 +43,16 @@ public class AuthServlet extends HttpServlet {
         user.setAuth("1");
         String value = request.getParameter("page");
         String lang = request.getParameter("lang");
+        Session session1 = HibernateSessionFactory.getSessionFactory().openSession();
+        Transaction tx = session1.beginTransaction();
+        List<Order1Entity> list = orderDao.getAllProducts();
+        session.setAttribute("orders",list);
+        tx.commit();
+        session1.close();
         switch (value) {
+            case "history":
+                response.sendRedirect("/jsp/history.jsp?lang="+lang);
+                break;
             case "s":
                 String id = request.getParameter("id");
                 response.sendRedirect("/s?id=" + id +"&lang="+lang);

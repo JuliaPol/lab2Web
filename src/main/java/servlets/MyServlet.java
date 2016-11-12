@@ -48,7 +48,7 @@ public class MyServlet extends HttpServlet {
         String page = request.getParameter("page");
         if ("office".equals(page)) {
             String paramOffice = param;
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/office1.jsp?lang="+lang+"&paramO="+paramOffice);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/office.jsp?lang="+lang+"&paramO="+paramOffice);
             dispatcher.forward(request,response);
         }
         int id = Integer.parseInt(request.getParameter("id"));
@@ -111,7 +111,7 @@ public class MyServlet extends HttpServlet {
                 "                <div class=\"basket\">\n" +
                 "                   <a href=\"s?page=office&lang="+lang+"\" class=\"aBas\">" + userName + "</a>\n" +
                 "                   <a href=\"/s" + numServlet + "?page=s&id=" + id + "&lang"+lang+"\" class=\"button1\">" + res.getString(log) + "</a>\n" +
-                "                   <a href=\"#\" class=\"button1\">" + res.getString("history") + "</a>\n" +
+                "                   <a href=\"/s2?page=history&lang="+lang+"\" class=\"button1\">" + res.getString("history") + "</a>\n" +
                 "                   "+ displayOrder +"\n"+
                 "                   <a href=\"/jsp/basket.jsp\" ><img src=\"../../../../image/basket.png\"></a>\n" +
                 "                   <p id=\"productsInBasket\">" + BasketList.getSize() + "</p>\n" +

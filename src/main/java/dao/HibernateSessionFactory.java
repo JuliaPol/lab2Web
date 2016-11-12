@@ -1,4 +1,4 @@
-package hibernate;
+package dao;
 
 /**
  * Created by Julia on 04.11.2016.
@@ -17,7 +17,7 @@ public class HibernateSessionFactory {
     protected static SessionFactory buildSessionFactory() {
         // A SessionFactory is set up once for an application!
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml
+                .configure() // configures settings from entities.cfg.xml
                 .build();
         try {
             sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();

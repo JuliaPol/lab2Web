@@ -9,9 +9,9 @@
 <%@ page import="java.io.*,java.util.*" %>
 <%@ page import="bean1.*" %>
 <%@ page import="org.hibernate.Session" %>
-<%@ page import="hibernate.HibernateSessionFactory" %>
+<%@ page import="dao.HibernateSessionFactory" %>
 <%@ page import="org.hibernate.Transaction" %>
-<%@ page import="hibernate.ProductEntity" %>
+<%@ page import="entities.ProductEntity" %>
 <%@ taglib prefix="f" uri="/WEB-INF/tld/tag1.tld" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
@@ -64,7 +64,7 @@
     <jsp:useBean id="basket" class="bean1.BasketList" scope="session" />
 </head>
 <body>
-<div class="body1">1
+<div class="body1">
     <%@include file="hat.jsp" %>
     <div class="card1">
         <div class="smallcard">

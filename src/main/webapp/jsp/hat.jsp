@@ -24,7 +24,7 @@
                 <a href="/s?page=office&lang=<%=lang%>" class="aBas">${user.name}</a>
                 <a href="/s3?page=list" class="button1"><%=res.getString("logout")%></a>
             </c:if>
-            <a href="#" class="button1"><%=res.getString("history")%></a>
+            <a href="/s2?page=history&lang=<%=lang%>" class="button1"><%=res.getString("history")%></a>
             <c:if test="${f:getSize()>0}">
                 <a href="/s2?page=order&lang=<%=lang%>" class="button1"><%=res.getString("checkout")%></a>
             </c:if>

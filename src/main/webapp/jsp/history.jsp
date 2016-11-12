@@ -1,19 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: Julia
-  Date: 02.11.2016
-  Time: 13:20
+  Date: 11.11.2016
+  Time: 21:28
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.io.*,java.util.*" %>
 <%@ page import="bean1.*" %>
 <%@ taglib prefix="f" uri="/WEB-INF/tld/tag1.tld" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>Office</title>
+    <title>History</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Kurale" rel="stylesheet">
@@ -38,14 +39,14 @@
     <fmt:setBundle basename="Shop"/>
 </head>
 <body>
-<div class="bodyOffice">
+<div class="bodyHistory">
     <div class="hat">
         <a href = "/?lang=${lang}"> <img src = "../image/logo.png" width="90" height="70"></a>
         <h3>PetShop</h3>
         <div class="basket">
-            <a href="/s2?page=order&lang=${lang}" class="aBas">${user.name}</a>
+            <a href="/s?page=office&lang=${lang}" class="aBas">${user.name}</a>
             <a href="/s3?page=list&lang=${lang}" class="button1"><fmt:message key="logout" /></a>
-            <a href="#" class="button1"><fmt:message key="history" /></a>
+            <a href="/s2?page=history&lang=${lang}" class="button1"><fmt:message key="history" /></a>
             <c:if test="${f:getSize()>0}">
                 <a href="/s2?page=order&lang=${lang}" class="button1"><fmt:message key="checkout"/></a>
             </c:if>
@@ -58,11 +59,28 @@
             <a href = "?page=office&lang=be_BY" onclick="addCookie('be_BY');"> <img src = "../image/belarus.png" width="30" height="30"></a>
         </div>
     </div>
-    <h1><fmt:message key="office"/></h1>
-    <div class="userOffice">
-        <h2><fmt:message key="yourName"/>${user.name}</h2>
-        <h2><fmt:message key="mark" />${pageContext.request.parameterMap.paramO[0]}</h2>
+    <h2 id="history"><fmt:message key="history"/></h2>
+    <div class="history">
+        <c:forEach var="order1" items="${sessionScope.orders}">
+            <div class="historyOffice">
+                <ul>
+                    <li id="historyLi1">
+                        <p><fmt:message key="${order1.product}"/></p>
+                        <c:if test="${fn:length(order1.address) > 3}">
+                            <p>${order1.address}</p>
+                        </c:if>
+                        <c:if test="${fn:length(order1.address) == 3}">
+                            <p><fmt:message key="${order1.address}"/></p>
+                        </c:if>
+                    </li>
+                    <li id="historyLi2">
+                        <p><fmt:message key="count"/> ${order1.countProduct}</p>
+                        <p><fmt:message key="date"/> ${order1.date}</p>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </c:forEach>
     </div>
-</div>
 </body>
 </html>

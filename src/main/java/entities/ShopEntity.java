@@ -1,8 +1,6 @@
-package hibernate;
+package entities;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
 
 /**
  * Created by Julia on 06.11.2016.
@@ -15,9 +13,9 @@ public class ShopEntity {
     private String address;
     private Double coordX;
     private Double coordY;
-    private Collection<OrderEntity> ordersByIdShop = new HashSet<>();
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_shop", nullable = false)
     public int getIdShop() {
         return idShop;
@@ -91,14 +89,5 @@ public class ShopEntity {
         result = 31 * result + (coordX != null ? coordX.hashCode() : 0);
         result = 31 * result + (coordY != null ? coordY.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "shopByIdShop")
-    public Collection<OrderEntity> getOrdersByIdShop() {
-        return ordersByIdShop;
-    }
-
-    public void setOrdersByIdShop(Collection<OrderEntity> ordersByIdShop) {
-        this.ordersByIdShop = ordersByIdShop;
     }
 }

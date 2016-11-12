@@ -1,19 +1,17 @@
-package hibernate;
+package entities;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
+import java.io.Serializable;
 
 /**
  * Created by Julia on 06.11.2016.
  */
 @Entity
-@Table(name = "product", schema = "petshop", catalog = "")
-public class ProductEntity {
+@Table(name = "product", schema = "petshop")
+public class ProductEntity implements Serializable {
     private int idProduct;
     private String name;
     private Integer price;
-    private Collection<ProdOrderEntity> prodOrdersByIdProduct = new HashSet<>();
     private String type;
     private String description;
     private String img;
@@ -21,6 +19,7 @@ public class ProductEntity {
     private String img2;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_product", nullable = false)
     public int getIdProduct() {
         return idProduct;
@@ -70,15 +69,6 @@ public class ProductEntity {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "productByIdProd")
-    public Collection<ProdOrderEntity> getProdOrdersByIdProduct() {
-        return prodOrdersByIdProduct;
-    }
-
-    public void setProdOrdersByIdProduct(Collection<ProdOrderEntity> prodOrdersByIdProduct) {
-        this.prodOrdersByIdProduct = prodOrdersByIdProduct;
     }
 
     @Basic

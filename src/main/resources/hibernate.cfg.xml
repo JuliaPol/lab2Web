@@ -10,12 +10,10 @@
         <property name="connection.username">root</property>
         <property name="connection.password">123456gf</property>
         <!-- NOTE that after automapping with IDEA property username and password will delete -->
-        <!--and will be:  Initial SessionFactory failedorg.hibernate.service.spi.ServiceException: Unable to create requested service-->
+        <!--and will be:  Initial SessionFactory failedorg.entities.service.spi.ServiceException: Unable to create requested service-->
         <!-- NOTE that after automapping with IDEA property username and password will delete -->
-        <mapping class="hibernate.UserEntity"/>
-        <mapping class="hibernate.OrderEntity"/>
-        <mapping class="hibernate.ShopEntity"/>
-        <mapping class="hibernate.ProductEntity"/>
-        <mapping class="hibernate.ProdOrderEntity"/>
+        <mapping class="entities.ShopEntity"/>
+        <mapping class="entities.ProductEntity"/>
+        <mapping class="entities.Order1Entity"/>
     </session-factory>
 </hibernate-configuration>
