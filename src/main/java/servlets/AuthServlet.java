@@ -2,8 +2,10 @@ package servlets;
 
 
 import bean1.User;
+import dao.CommentsDao;
 import dao.HibernateSessionFactory;
 import dao.OrderDao;
+import entities.CommentsEntity;
 import entities.Order1Entity;
 import entities.ProductEntity;
 import org.hibernate.Session;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

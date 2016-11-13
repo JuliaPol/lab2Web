@@ -46,7 +46,7 @@ public class OrderServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String lang = request.getParameter("lang");
         String shop = request.getParameter("shop");
-        String city =request.getParameter("city");
+        String delivery =request.getParameter("delivery");
         Locale locale;
         if ("en_GB".equals(lang)) {
             locale = new Locale("en", "GB");
@@ -58,11 +58,17 @@ public class OrderServlet extends HttpServlet {
             locale = Locale.getDefault();
         }
         ResourceBundle res = ResourceBundle.getBundle("Shop", locale);
-        if(city != null) {
-            String region =request.getParameter("region");
-            String street =request.getParameter("street");
-            String house =request.getParameter("house");
-            shop = city + " " + region + " " + street + " " + house;
+        if(delivery != null) {
+            String city =request.getParameter("city");
+            if(city == null) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/order.jsp?lang=" + lang);
+                dispatcher.forward(request, response);
+            } else {
+                String region =request.getParameter("region");
+                String street =request.getParameter("street");
+                String house =request.getParameter("house");
+                shop = city + " " + region + " " + street + " " + house;
+            }
         }
         if (shop == null) {
             Session session1 = HibernateSessionFactory.getSessionFactory().openSession();

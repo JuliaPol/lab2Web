@@ -36,8 +36,9 @@
         <c:set var="lang" value="be_BY"/>
     </c:if>
     <fmt:setBundle basename="Shop"/>
+    <script>setInterval(function(){myTimer('${lang}')},1000);</script>
 </head>
-<body>
+<body onload="loadXMLDoc()">
 <div class="bodyOffice">
     <div class="hat">
         <a href = "/?lang=${lang}"> <img src = "../image/logo.png" width="90" height="70"></a>
@@ -61,9 +62,16 @@
     <h1><fmt:message key="office"/></h1>
     <div class="userOffice">
         <h2><fmt:message key="yourName"/>${user.name}</h2>
+        <p id="date"></p>
         <h2><fmt:message key="mark"/>${pageContext.request.parameterMap.paramO[0]}</h2>
         <a id="history1" href="/s2?page=history&lang=${lang}" ><fmt:message key="history1"/></a>
     </div>
+    <div class="officeComments">
+        <h2><fmt:message key="comment"/></h2>
+        <textarea id="comment" name="comment" rows="10" cols="45"></textarea><br>
+        <input class="button5" type="submit" value="<fmt:message key="send"/>" onclick="loadXMLDoc()">
+    </div>
+    <div id="RESULT"></div>
 </div>
 </body>
 </html>

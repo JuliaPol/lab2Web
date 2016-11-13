@@ -95,7 +95,7 @@
             </ul>
         </div>
         <div id="delivery" class="specification1" style="display: none;">
-            <form method="post" action="/s4?lang=${lang}">
+            <form method="post" action="/s4?lang=${lang}&page=delivery">
                 <label><fmt:message key="city"/></label><br>
                 <input class="deliveryInp" name="city" type="text" placeholder="City" size="50"/><br>
                 <label><fmt:message key="region"/></label><br>

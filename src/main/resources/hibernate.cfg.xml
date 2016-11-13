@@ -15,5 +15,6 @@
         <mapping class="entities.ShopEntity"/>
         <mapping class="entities.ProductEntity"/>
         <mapping class="entities.Order1Entity"/>
+        <mapping class="entities.CommentsEntity"/>
     </session-factory>
 </hibernate-configuration>

@@ -7,6 +7,8 @@ package servlets;
 import bean1.AnimalList;
 import bean1.BasketList;
 import bean1.User;
+import dao.CommentsDao;
+import entities.CommentsEntity;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -15,6 +17,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -42,6 +46,7 @@ public class MyServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String lang = request.getParameter("lang");
@@ -75,7 +80,6 @@ public class MyServlet extends HttpServlet {
         response.addCookie(cookie1);
         ResourceBundle res = ResourceBundle.getBundle("Shop", locale);
         int param1;
-        HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         int numServlet;
         String log;
@@ -128,7 +132,7 @@ public class MyServlet extends HttpServlet {
                 "                 <h3>" + res.getString(AnimalList.getAnimalList().get(id-1).getName()) + "</h3>\n" +
                 "                 <div class=\"price\">\n" +
                 "                     <p id=\"price\">" + AnimalList.getAnimalList().get(id-1).getCost() + "</p>\n" +
-                "                     <form action=\"/s1\" method=\"post\">\n" +
+                "                     <form action=\"/s1?lang="+lang+"\" method=\"post\">\n" +
                 "                       <input name=\"idServlet\" type=\"image\" src=\"../image/icon3.png\" class=\"buy\" value =" + id + ">\n" +
                 "                     </form>\n" +
                 "                 </div>\n" +
