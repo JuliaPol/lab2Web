@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 public class User {
     private String name;
     private String auth;
-    private String mark;
 
     public User() {
     }
@@ -27,10 +26,6 @@ public class User {
 
     public String getAuth() {
         return auth;
-    }
-
-    public String getMark() {
-        return mark;
     }
 
     public void setName(String name) {

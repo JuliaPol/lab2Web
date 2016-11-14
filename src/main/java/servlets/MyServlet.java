@@ -95,7 +95,7 @@ public class MyServlet extends HttpServlet {
         }
         String displayOrder ="";
         if(BasketList.getSize()>0) {
-            displayOrder="<a href="+"/s2?page=order&lang="+lang+"\" class=\"button1\">"+res.getString("checkout")+"</a>";
+            displayOrder="<a href=\"/s2?page=order&lang="+lang+"\" class=\"button1\">"+res.getString("checkout")+"</a>";
         }
         param1 = Integer.parseInt(param);
         StringBuilder sb = new StringBuilder();

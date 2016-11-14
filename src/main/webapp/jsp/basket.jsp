@@ -57,7 +57,7 @@
                     <a href="/s?page=office&lang=${lang}" class="aBas">${user.name}</a>
                     <a href="/s3?page=bas" class="button1"><fmt:message key="logout" /></a>
                 </c:if>
-                <a href="#" class="button1"><fmt:message key="history" /></a>
+                <a href="/s2?page=history&lang=${lang}" class="button1"><fmt:message key="history" /></a>
                 <c:if test="${f:getSize()>0}">
                     <a href="/s2?page=order&lang=${lang}" class="button1"><fmt:message key="checkout"/></a>
                 </c:if>

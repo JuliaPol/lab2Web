@@ -46,7 +46,7 @@ public class OrderServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String lang = request.getParameter("lang");
         String shop = request.getParameter("shop");
-        String delivery =request.getParameter("delivery");
+        String page = request.getParameter("page");
         Locale locale;
         if ("en_GB".equals(lang)) {
             locale = new Locale("en", "GB");
@@ -58,15 +58,15 @@ public class OrderServlet extends HttpServlet {
             locale = Locale.getDefault();
         }
         ResourceBundle res = ResourceBundle.getBundle("Shop", locale);
-        if(delivery != null) {
-            String city =request.getParameter("city");
-            if(city == null) {
+        if ("delivery".equals(page)) {
+            String city = request.getParameter("city");
+            if ("".equals(city)) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/order.jsp?lang=" + lang);
                 dispatcher.forward(request, response);
             } else {
-                String region =request.getParameter("region");
-                String street =request.getParameter("street");
-                String house =request.getParameter("house");
+                String region = request.getParameter("region");
+                String street = request.getParameter("street");
+                String house = request.getParameter("house");
                 shop = city + " " + region + " " + street + " " + house;
             }
         }
@@ -105,7 +105,7 @@ public class OrderServlet extends HttpServlet {
             }
             tx.commit();
             session1.close();
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/order.jsp?lang=" + lang + "&CoordX=" + valuesCoordX.toString() + "&CoordY=" + valuesCoordY.toString() + "&Address=" + valuesAddress.toString() + "&Name=" + valuesName.toString()+ "&Id=" + valuesId.toString());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/order.jsp?lang=" + lang + "&CoordX=" + valuesCoordX.toString() + "&CoordY=" + valuesCoordY.toString() + "&Address=" + valuesAddress.toString() + "&Name=" + valuesName.toString() + "&Id=" + valuesId.toString());
             dispatcher.forward(request, response);
         } else {
             BasketList prod = BasketList.get(session);
